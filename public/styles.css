@@ -1,0 +1,10 @@
+html {
+  background-color: darkslategray;
+  overflow-y: auto;
+}
+
+body {
+  font-family: Helvetica, Geneca, sans-serif;
+  text-align: center;
+  font-size: calc(16px + 1.5vw);
+}
