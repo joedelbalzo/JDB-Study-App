@@ -1,10 +1,43 @@
 html {
-  background-color: darkslategray;
+  background-color: #181818;
   overflow-y: auto;
 }
 
 body {
   font-family: Helvetica, Geneca, sans-serif;
+  color: #e4e6eb;
   text-align: center;
-  font-size: calc(16px + 1.5vw);
+  font-size: calc(12px + 1.5vw);
+}
+
+.main-question-div {
+  margin: 2vh auto;
+  width: 80vw;
+}
+
+.currentQuestion {
+  /* border: 1px solid white; */
+  text-align: left;
+
+  margin: 2vh auto 2vh;
+}
+.main-question-div > form {
+  display: flex;
+  flex-direction: column;
+  margin: 5vh auto;
+  text-align: left;
+  max-width: 70vw;
+  font-size: calc(10px + 1.5vw);
+}
+.main-question-div > form > label {
+  display: flex;
+  align-items: center;
+  margin: 1vh;
+}
+.main-question-div > form > label > input[type="checkbox"] {
+  border: 10px solid red;
+}
+form > button {
+  margin: 2vh auto;
+  width: 20vw;
 }

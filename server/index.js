@@ -1,6 +1,6 @@
 const app = require("./app");
 const conn = require("./db/conn");
-const { syncAndSeed, Question } = require("./db");
+const { syncAndSeed } = require("./db");
 
 const init = async () => {
   try {
