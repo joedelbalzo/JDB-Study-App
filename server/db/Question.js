@@ -1,5 +1,5 @@
 const conn = require("./conn");
-const { STRING, UUID, UUIDV4, INTEGER } = conn.Sequelize;
+const { STRING, UUID, UUIDV4, INTEGER, TEXT } = conn.Sequelize;
 
 const Question = conn.define("question", {
   id: {
@@ -14,6 +14,10 @@ const Question = conn.define("question", {
   question: {
     type: STRING,
     allowNull: false,
+  },
+  codeSnippet: {
+    type: TEXT,
+    allowNull: true,
   },
   answerOne: {
     type: STRING,

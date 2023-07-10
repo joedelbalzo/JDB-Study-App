@@ -4063,15 +4063,13 @@ const Home = () => {
   const [threeIsChecked, setThreeIsChecked] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [fourIsChecked, setFourIsChecked] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [fiveIsChecked, setFiveIsChecked] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  let [correctThisSession, setCorrectThisSession] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
+  let [incorrectThisSession, setIncorrectThisSession] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
   const dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useDispatch)();
   if (!questions) {
     console.log("no questions!");
     return null;
   }
-  // else {
-  //   console.log("there's clearly questions");
-  // }
-
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     console.log("...fetching");
     dispatch((0,_store__WEBPACK_IMPORTED_MODULE_1__.fetchQuestions)());
@@ -4104,19 +4102,7 @@ const Home = () => {
     let random = [...mostlyIncorrect, ...mostlyIncorrect, ...mostlyCorrect];
     return random[Math.floor(Math.random() * random.length)];
   };
-
-  // if (currentQuestion) {
-  //   console.log("current", currentQuestion);
-  // } else {
-  //   console.log("fu");
-  // }
-
-  const handleSelectedAnswer = ev => {
-    console.log(ev);
-    console.log(oneIsChecked);
-    console.log(twoIsChecked);
-  };
-  const handleAnswerSubmit = (ev, curr) => {
+  const handleAnswerSubmit = async (ev, curr) => {
     ev.preventDefault();
     console.log(curr.timesCorrect, curr.timesIncorrect);
     const correctAnswer = [];
@@ -4142,13 +4128,21 @@ const Home = () => {
         console.log(curr.timesCorrect, curr.timesIncorrect);
         console.log("YOU GOT IT WRONG BABYYYYYYYYYY");
         curr.timesIncorrect++;
+        incorrectThisSession === 0 ? setIncorrectThisSession(1) : setIncorrectThisSession(incorrectThisSession = incorrectThisSession + 1);
+        await setCurrentQuestion(questionRandomizer());
+        setOneIsChecked(false);
+        setTwoIsChecked(false);
+        setThreeIsChecked(false);
+        setFourIsChecked(false);
+        setFiveIsChecked(false);
         return false;
       }
     }
     curr.timesCorrect++;
+    correctThisSession === 0 ? setCorrectThisSession(1) : setCorrectThisSession(correctThisSession = correctThisSession + 1);
     console.log(curr.timesCorrect, curr.timesIncorrect);
     console.log("YOU GOT IT RIGHT!");
-    setCurrentQuestion(questionRandomizer());
+    await setCurrentQuestion(questionRandomizer());
     setOneIsChecked(false);
     setTwoIsChecked(false);
     setThreeIsChecked(false);
@@ -4157,9 +4151,11 @@ const Home = () => {
   };
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "main-question-div"
-  }, currentQuestion && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, currentQuestion && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, console.log(currentQuestion), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "currentQuestion"
-  }, currentQuestion.question), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
+  }, currentQuestion.question), currentQuestion.codeSnippet ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    id: "codesnippet"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("pre", null, currentQuestion.codeSnippet)) : "", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
     onSubmit: ev => handleAnswerSubmit(ev, currentQuestion)
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     id: "checkbox",
@@ -4181,14 +4177,14 @@ const Home = () => {
     type: "checkbox",
     checked: fourIsChecked,
     onChange: ev => setFourIsChecked(ev.target.checked)
-  }), currentQuestion.answerFour.slice(1)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+  }), currentQuestion.answerFour.slice(1)), currentQuestion.answerFive ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     id: "checkbox",
     type: "checkbox",
     checked: fiveIsChecked,
     onChange: ev => setFiveIsChecked(ev.target.checked)
-  }), currentQuestion.answerFive.slice(1)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+  }), currentQuestion.answerFive.slice(1)) : "", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     type: "submit"
-  }, "Submit Answer")))));
+  }, "Submit Answer")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Correct:", correctThisSession), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Incorrect:", incorrectThisSession));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Home);
 

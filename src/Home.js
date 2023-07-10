@@ -12,15 +12,14 @@ const Home = () => {
   const [threeIsChecked, setThreeIsChecked] = useState(false);
   const [fourIsChecked, setFourIsChecked] = useState(false);
   const [fiveIsChecked, setFiveIsChecked] = useState(false);
+  let [correctThisSession, setCorrectThisSession] = useState(0);
+  let [incorrectThisSession, setIncorrectThisSession] = useState(0);
   const dispatch = useDispatch();
 
   if (!questions) {
     console.log("no questions!");
     return null;
   }
-  // else {
-  //   console.log("there's clearly questions");
-  // }
 
   useEffect(() => {
     console.log("...fetching");
@@ -56,19 +55,7 @@ const Home = () => {
     return random[Math.floor(Math.random() * random.length)];
   };
 
-  // if (currentQuestion) {
-  //   console.log("current", currentQuestion);
-  // } else {
-  //   console.log("fu");
-  // }
-
-  const handleSelectedAnswer = (ev) => {
-    console.log(ev);
-    console.log(oneIsChecked);
-    console.log(twoIsChecked);
-  };
-
-  const handleAnswerSubmit = (ev, curr) => {
+  const handleAnswerSubmit = async (ev, curr) => {
     ev.preventDefault();
     console.log(curr.timesCorrect, curr.timesIncorrect);
     const correctAnswer = [];
@@ -97,14 +84,25 @@ const Home = () => {
 
         console.log("YOU GOT IT WRONG BABYYYYYYYYYY");
         curr.timesIncorrect++;
+        incorrectThisSession === 0
+          ? setIncorrectThisSession(1)
+          : setIncorrectThisSession((incorrectThisSession = incorrectThisSession + 1));
+        await setCurrentQuestion(questionRandomizer());
+        setOneIsChecked(false);
+        setTwoIsChecked(false);
+        setThreeIsChecked(false);
+        setFourIsChecked(false);
+        setFiveIsChecked(false);
         return false;
       }
     }
     curr.timesCorrect++;
+    correctThisSession === 0
+      ? setCorrectThisSession(1)
+      : setCorrectThisSession((correctThisSession = correctThisSession + 1));
     console.log(curr.timesCorrect, curr.timesIncorrect);
-
     console.log("YOU GOT IT RIGHT!");
-    setCurrentQuestion(questionRandomizer());
+    await setCurrentQuestion(questionRandomizer());
     setOneIsChecked(false);
     setTwoIsChecked(false);
     setThreeIsChecked(false);
@@ -117,7 +115,16 @@ const Home = () => {
       <div className="main-question-div">
         {currentQuestion && (
           <>
+            {console.log(currentQuestion)}
+
             <div className="currentQuestion">{currentQuestion.question}</div>
+            {currentQuestion.codeSnippet ? (
+              <div id="codesnippet">
+                <pre>{currentQuestion.codeSnippet}</pre>
+              </div>
+            ) : (
+              ""
+            )}
             <form onSubmit={(ev) => handleAnswerSubmit(ev, currentQuestion)}>
               <label>
                 <input
@@ -155,21 +162,27 @@ const Home = () => {
                 />
                 {currentQuestion.answerFour.slice(1)}
               </label>
-              <label>
-                <input
-                  id="checkbox"
-                  type="checkbox"
-                  checked={fiveIsChecked}
-                  onChange={(ev) => setFiveIsChecked(ev.target.checked)}
-                />
-                {currentQuestion.answerFive.slice(1)}
-              </label>
+              {currentQuestion.answerFive ? (
+                <label>
+                  <input
+                    id="checkbox"
+                    type="checkbox"
+                    checked={fiveIsChecked}
+                    onChange={(ev) => setFiveIsChecked(ev.target.checked)}
+                  />
+                  {currentQuestion.answerFive.slice(1)}
+                </label>
+              ) : (
+                ""
+              )}
               {/* Repeat the above block for the remaining answer options */}
               <button type="submit">Submit Answer</button>
             </form>
           </>
         )}
       </div>
+      <p>Correct:{correctThisSession}</p>
+      <p>Incorrect:{incorrectThisSession}</p>
     </>
   );
 };

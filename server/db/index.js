@@ -8,6 +8,7 @@ const syncAndSeed = async () => {
       return Question.create({
         category: q.category,
         question: q.question,
+        codeSnippet: q.codeSnippet,
         answerOne: q.answerOne,
         answerTwo: q.answerTwo,
         answerThree: q.answerThree,
