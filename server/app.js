@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const path = require("path");
-const { Question } = require("./db");
+const { Question, CodingQuestion } = require("./db");
 
 app.use(express.json());
 
@@ -13,6 +13,14 @@ app.get("/api/questions", async (req, res, next) => {
   try {
     const questions = await Question.findAll();
     res.send(questions);
+  } catch (err) {
+    console.log(err);
+  }
+});
+app.get("/api/codingquestions", async (req, res, next) => {
+  try {
+    const codingQuestions = await CodingQuestion.findAll();
+    res.send(codingQuestions);
   } catch (err) {
     console.log(err);
   }

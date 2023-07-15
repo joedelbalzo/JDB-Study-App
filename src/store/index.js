@@ -9,15 +9,28 @@ const questions = (state = [], action) => {
   }
   return state;
 };
+const codingQuestions = (state = [], action) => {
+  if (action.type === "SET_CODING_QUESTIONS") {
+    return action.codingQuestions;
+  }
+  return state;
+};
 
 const reducer = combineReducers({
   questions,
+  codingQuestions,
 });
 
 export const fetchQuestions = () => {
   return async (dispatch) => {
     const response = await axios.get("/api/questions");
     dispatch({ type: "SET_QUESTIONS", questions: response.data });
+  };
+};
+export const fetchCodingQuestions = () => {
+  return async (dispatch) => {
+    const response = await axios.get("/api/codingquestions");
+    dispatch({ type: "SET_CODING_QUESTIONS", codingQuestions: response.data });
   };
 };
 
