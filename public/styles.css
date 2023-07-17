@@ -62,9 +62,10 @@ form > button {
   margin: auto;
   border: 1px solid gray;
   background-color: #383838;
+  font-size: calc(12px + 1vw);
   border-radius: 4px;
   word-wrap: break-word;
-  width: 60vw;
+  width: fit-content;
   text-align: left;
 }
 /* CodeRunner.css */

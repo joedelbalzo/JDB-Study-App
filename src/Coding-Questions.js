@@ -84,6 +84,10 @@ const Home = () => {
     }
   };
 
+  const clearStats = () => {
+    console.log("clearing!");
+  };
+
   correctState ? console.log(correctState) : "";
 
   return (
@@ -92,28 +96,19 @@ const Home = () => {
         {currentQuestion && (
           <>
             {console.log(currentQuestion)}
-
-            {/* <div className="currentQuestion">{currentQuestion.question}</div> */}
-            {currentQuestion.codeSnippet ? (
-              <div id="codesnippet">
-                <pre>{currentQuestion.codeSnippet}</pre>
-              </div>
-            ) : (
-              ""
-            )}
-            {/* <form onSubmit={(ev) => handleAnswerSubmit(ev, currentQuestion)}> */}
             <CodeRunner
               onCorrectChange={handleCorrectChange}
               question={currentQuestion}
               onChange={() => handleAnswerSubmit(currentQuestion)}
             />
-            {/* <button type="submit">Submit Answer</button>
-            </form> */}
           </>
         )}
       </div>
       <p>Correct:{correctThisSession}</p>
       <p>Incorrect:{incorrectThisSession}</p>
+      <button className="run-button" onClick={clearStats}>
+        Clear Stats
+      </button>{" "}
     </>
   );
 };

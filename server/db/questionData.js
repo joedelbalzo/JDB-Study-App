@@ -674,5 +674,731 @@ const questionData = [
     timesCorrect: 1,
     timesIncorrect: 2,
   },
+  {
+    category: "JavaScript",
+    question: "What is the use of 'this' keyword in JavaScript?",
+    answerOne: "CIt refers to the current instance of the object",
+    answerTwo: "XIt refers to the previous instance of the object",
+    answerThree: "XIt refers to the global object",
+    answerFour: "XAll of the above",
+    answerFive: "XNone of the above",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    category: "JavaScript",
+    question:
+      "Which method in an Array object is used to add and/or remove elements from an array?",
+    answerOne: "Xfilter()",
+    answerTwo: "Xmap()",
+    answerThree: "Csplice()",
+    answerFour: "Xreduce()",
+    answerFive: "XindexOf()",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    category: "Data Structures",
+    question: "What data structure uses a Last In First Out (LIFO) method?",
+    answerOne: "XQueue",
+    answerTwo: "XLinked List",
+    answerThree: "XArray",
+    answerFour: "CStack",
+    answerFive: "XBinary Tree",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    category: "Data Structures",
+    question:
+      "In binary search trees, where does a node with a value less than the parent node go?",
+    answerOne: "XTo the right",
+    answerTwo: "XTo the root",
+    answerThree: "CTo the left",
+    answerFour: "XNone of the above",
+    answerFive: "XAll of the above",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    category: "Algorithms",
+    question:
+      "What is the time complexity of the quicksort algorithm in the average case scenario?",
+    answerOne: "XO(n)",
+    answerTwo: "XO(nlogn)",
+    answerThree: "CO(nlogn)",
+    answerFour: "XO(n^2)",
+    answerFive: "XO(1)",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    category: "Algorithms",
+    question:
+      "In the Dijkstra's algorithm, which data structure is typically used to store the vertices?",
+    answerOne: "XArray",
+    answerTwo: "XLinked List",
+    answerThree: "XStack",
+    answerFour: "CHeap",
+    answerFive: "XHash Table",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    category: "JavaScript",
+    question:
+      "What type of JavaScript variable is mutable and allows properties to be added and removed?",
+    answerOne: "CObject",
+    answerTwo: "XNumber",
+    answerThree: "XString",
+    answerFour: "XBoolean",
+    answerFive: "XNone of the above",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    category: "JavaScript",
+    question: "Which method is used to remove the last element from a JavaScript array?",
+    answerOne: "Xshift()",
+    answerTwo: "Cpop()",
+    answerThree: "Xpush()",
+    answerFour: "Xunshift()",
+    answerFive: "Xsplice()",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    category: "Data Structures",
+    question: "In hash tables, what technique helps handle collisions?",
+    answerOne: "XBinary Search",
+    answerTwo: "XDynamic Programming",
+    answerThree: "CDouble Hashing",
+    answerFour: "XRadix Sort",
+    answerFive: "XAll of the above",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    category: "Algorithms",
+    question: "Which of the following is not a type of sorting algorithm?",
+    answerOne: "XBubble Sort",
+    answerTwo: "CPrim's Algorithm",
+    answerThree: "XHeap Sort",
+    answerFour: "XQuick Sort",
+    answerFive: "XInsertion Sort",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    category: "Binary Search Trees",
+    question: "What is the time complexity of searching for an element in a binary search tree?",
+    answerOne: "XO(n^2)",
+    answerTwo: "XO(logn)",
+    answerThree: "CO(n)",
+    answerFour: "XO(1)",
+    answerFive: "XO(nlogn)",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    category: "Binary Search Trees",
+    question: "What does the following JavaScript code do?",
+    codeSnippet: `
+    function isBST(node, min = null, max = null) {
+      if (node === null) {
+          return true;
+      }
+      if ((min !== null && node.val <= min) || (max !== null && node.val > max)) {
+          return false;
+      }
+      return isBST(node.left, min, node.val) && isBST(node.right, node.val, max);
+    }
+    `,
+    answerOne: "XReturns the sum of all nodes in a binary search tree",
+    answerTwo: "XReturns a binary search tree after deleting a specific node",
+    answerThree: "CChecks if a given binary tree is a binary search tree",
+    answerFour: "XFinds the smallest element in a binary search tree",
+    answerFive: "XNone of the above",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    category: "Binary Search Trees",
+    question: "In a binary search tree, which traversal method results in a sorted order of nodes?",
+    answerOne: "XPreorder traversal",
+    answerTwo: "XPostorder traversal",
+    answerThree: "CInorder traversal",
+    answerFour: "XLevel-order traversal",
+    answerFive: "XNone of the above",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    category: "Binary Search Trees",
+    question:
+      "What operation would give a worst-case time complexity of O(n) in a binary search tree?",
+    answerOne: "XInsertion",
+    answerTwo: "XDeletion",
+    answerThree: "XSearch",
+    answerFour: "CAll of the above",
+    answerFive: "XNone of the above",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    category: "Binary Search Trees",
+    question: "What does the following JavaScript code do?",
+    codeSnippet: `
+    function findMin(root) {
+      let current = root;
+      while (current.left !== null) {
+          current = current.left;
+      }
+      return current.key;
+    }
+    `,
+    answerOne: "CReturns the minimum element in a binary search tree",
+    answerTwo: "XReturns the maximum element in a binary search tree",
+    answerThree: "XReturns the sum of all elements in a binary search tree",
+    answerFour: "XReturns the height of the binary search tree",
+    answerFive: "XNone of the above",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    category: "Binary Search Trees",
+    question:
+      "In a binary search tree, the left child is _______ than the parent, and the right child is _______ than the parent.",
+    answerOne: "Xlarger, smaller",
+    answerTwo: "Csmaller, larger",
+    answerThree: "Xlarger, larger",
+    answerFour: "Xsmaller, smaller",
+    answerFive: "XNone of the above",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    category: "Binary Trees",
+    question: "What is the maximum number of nodes at level 'l' in a binary tree?",
+    answerOne: "Xl",
+    answerTwo: "Xl^2",
+    answerThree: "CL^2",
+    answerFour: "Xl!",
+    answerFive: "XNone of the above",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    category: "Binary Trees",
+    question: "What is the time complexity of in-order tree traversal in a binary tree?",
+    answerOne: "XO(logn)",
+    answerTwo: "XO(n^2)",
+    answerThree: "CO(n)",
+    answerFour: "XO(1)",
+    answerFive: "XO(nlogn)",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    category: "Binary Trees",
+    question: "What does the following JavaScript code do?",
+    codeSnippet: `
+    function height(root) {
+      if (root === null) {
+          return -1;
+      } else {
+          return Math.max(height(root.left), height(root.right)) + 1;
+      }
+    }
+    `,
+    answerOne: "XFinds the sum of all elements in the binary tree",
+    answerTwo: "CFinds the height of the binary tree",
+    answerThree: "XFinds the largest element in the binary tree",
+    answerFour: "XChecks if the binary tree is balanced",
+    answerFive: "XNone of the above",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    category: "Binary Search Trees",
+    question:
+      "What is the time complexity of the worst case for insert operation in a Binary Search Tree?",
+    answerOne: "XO(1)",
+    answerTwo: "XO(logn)",
+    answerThree: "XO(nlogn)",
+    answerFour: "CO(n)",
+    answerFive: "XO(n^2)",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    category: "Binary Search Trees",
+    question: "What does the following JavaScript code do?",
+    codeSnippet: `
+    function isBalanced(root) {
+      if (root === null) {
+          return true;
+      }
+      const leftHeight = height(root.left);
+      const rightHeight = height(root.right);
+      return (
+        Math.abs(leftHeight - rightHeight) <= 1 &&
+        isBalanced(root.left) &&
+        isBalanced(root.right)
+      );
+    }
+    `,
+    answerOne: "CChecks if the binary tree is balanced",
+    answerTwo: "XReturns the height of the binary tree",
+    answerThree: "XChecks if the binary tree is a binary search tree",
+    answerFour: "XFinds the largest element in the binary tree",
+    answerFive: "XNone of the above",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    category: "Binary Search Trees",
+    question: "What does 'balanced' mean in the context of Binary Search Trees?",
+    answerOne: "XAll nodes have two children",
+    answerTwo: "XThe tree is fully filled",
+    answerThree: "XThere are no duplicate nodes",
+    answerFour: "CThe height of the left and right subtrees of every node differ by no more than 1",
+    answerFive: "XNone of the above",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    category: "Binary Trees",
+    question: "What type of binary tree is used for Huffman coding?",
+    answerOne: "XBinary Search Tree",
+    answerTwo: "XB+ Tree",
+    answerThree: "CBinary Heap",
+    answerFour: "XAVL Tree",
+    answerFive: "XRed-Black Tree",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    category: "Binary Search Trees",
+    question:
+      "In the context of Binary Search Trees, what does the term 'in-order predecessor' mean?",
+    answerOne: "XThe node with the highest value",
+    answerTwo: "XThe parent node",
+    answerThree: "CThe node with the next lower value",
+    answerFour: "XThe left child of a node",
+    answerFive: "XThe right child of a node",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    category: "JavaScript Data Structures",
+    question: "What will be the output of the following JavaScript code?",
+    codeSnippet: `
+    let arr = [10, 20, 30, 40, 50];
+    console.log(arr.length);
+    `,
+    answerOne: "C5",
+    answerTwo: "X50",
+    answerThree: "X10",
+    answerFour: "X4",
+    answerFive: "XNone of the above",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    category: "JavaScript Data Structures",
+    question: "What will be the output of the following JavaScript code?",
+    codeSnippet: `
+    let set = new Set();
+    set.add(1);
+    set.add(2);
+    set.add(3);
+    console.log(set.has(2));
+    `,
+    answerOne: "XFalse",
+    answerTwo: "CTrue",
+    answerThree: "X3",
+    answerFour: "X2",
+    answerFive: "XNone of the above",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    category: "JavaScript Data Structures",
+    question: "What is the time complexity of adding an element to a JavaScript array?",
+    answerOne: "CO(1)",
+    answerTwo: "XO(n)",
+    answerThree: "XO(nlogn)",
+    answerFour: "XO(logn)",
+    answerFive: "XNone of the above",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    category: "JavaScript Data Structures",
+    question: "What data structure is ideally suited for a first-in-first-out (FIFO) process?",
+    answerOne: "XSet",
+    answerTwo: "XArray",
+    answerThree: "XStack",
+    answerFour: "CQueue",
+    answerFive: "XNone of the above",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    category: "JavaScript Data Structures",
+    question: "What will be the output of the following JavaScript code?",
+    codeSnippet: `
+    let map = new Map();
+    map.set('name', 'John');
+    console.log(map.get('name'));
+    `,
+    answerOne: "Xname",
+    answerTwo: "Xundefined",
+    answerThree: "CJohn",
+    answerFour: "Xnull",
+    answerFive: "XNone of the above",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    category: "JavaScript Data Structures",
+    question: "Which method removes the last element from an array and returns that element?",
+    answerOne: "Xshift()",
+    answerTwo: "Xunshift()",
+    answerThree: "Cpop()",
+    answerFour: "Xpush()",
+    answerFive: "XNone of the above",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    category: "JavaScript Data Structures",
+    question: "What will be the output of the following JavaScript code?",
+    codeSnippet: `
+    let arr = [1, 2, 3, 4, 5];
+    arr.splice(2, 1);
+    console.log(arr);
+    `,
+    answerOne: "X[1, 2, 3, 4, 5]",
+    answerTwo: "C[1, 2, 4, 5]",
+    answerThree: "X[1, 3, 4, 5]",
+    answerFour: "X[2, 3, 4, 5]",
+    answerFive: "XNone of the above",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    category: "JavaScript Data Structures",
+    question: "Which of the following is not a built-in JavaScript data structure?",
+    answerOne: "XLinked List",
+    answerTwo: "CHeap",
+    answerThree: "XSet",
+    answerFour: "XMap",
+    answerFive: "XArray",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    category: "JavaScript Data Structures",
+    question: "What will be the output of the following JavaScript code?",
+    codeSnippet: `
+    let stack = [];
+    stack.push(1);
+    stack.push(2);
+    console.log(stack.pop());
+    `,
+    answerOne: "X1",
+    answerTwo: "C2",
+    answerThree: "Xundefined",
+    answerFour: "Xnull",
+    answerFive: "XNone of the above",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    category: "JavaScript Data Structures",
+    question: "What is the time complexity to access an element in a JavaScript array by index?",
+    answerOne: "XO(n)",
+    answerTwo: "CO(1)",
+    answerThree: "XO(nlogn)",
+    answerFour: "XO(logn)",
+    answerFive: "XNone of the above",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    category: "Python Data Structures",
+    question: "What will be the output of the following Python code?",
+    codeSnippet: `
+    list = [1, 2, 3, 4, 5]
+    print(len(list))
+    `,
+    answerOne: "C5",
+    answerTwo: "X1",
+    answerThree: "X2",
+    answerFour: "X3",
+    answerFive: "XNone of the above",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    category: "Python Data Structures",
+    question: "What will be the output of the following Python code?",
+    codeSnippet: `
+    dict = {'Name': 'Zara', 'Age': 7}
+    print("Value : %s" %  dict.get('Age'))
+    `,
+    answerOne: "XName",
+    answerTwo: "C7",
+    answerThree: "XZara",
+    answerFour: "XNone",
+    answerFive: "XNone of the above",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    category: "Python Data Structures",
+    question: "What is the time complexity of appending an element to a Python list?",
+    answerOne: "XO(n)",
+    answerTwo: "CO(1)",
+    answerThree: "XO(nlogn)",
+    answerFour: "XO(logn)",
+    answerFive: "XNone of the above",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    category: "Python Data Structures",
+    question: "What data structure is ideally suited for a first-in-first-out (FIFO) process?",
+    answerOne: "XList",
+    answerTwo: "XDict",
+    answerThree: "XStack",
+    answerFour: "CQueue",
+    answerFive: "XNone of the above",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    category: "Python Data Structures",
+    question: "What will be the output of the following Python code?",
+    codeSnippet: `
+    stack = [3, 4, 5]
+    stack.append(6)
+    stack.append(7)
+    print(stack)
+    `,
+    answerOne: "X[3, 4, 5]",
+    answerTwo: "C[3, 4, 5, 6, 7]",
+    answerThree: "X[6, 7]",
+    answerFour: "X[7, 6, 5, 4, 3]",
+    answerFive: "XNone of the above",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    category: "Python Data Structures",
+    question: "Which method removes the last element from a list and returns that element?",
+    answerOne: "Xshift()",
+    answerTwo: "Xunshift()",
+    answerThree: "Cpop()",
+    answerFour: "Xpush()",
+    answerFive: "XNone of the above",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    category: "Python Data Structures",
+    question: "What will be the output of the following Python code?",
+    codeSnippet: `
+    queue = [3, 4, 5]
+    queue.append(6)
+    queue.append(7)
+    queue.pop(0)
+    print(queue)
+    `,
+    answerOne: "X[3, 4, 5]",
+    answerTwo: "X[3, 4, 5, 6, 7]",
+    answerThree: "C[4, 5, 6, 7]",
+    answerFour: "X[7, 6, 5, 4]",
+    answerFive: "XNone of the above",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    category: "Python Data Structures",
+    question: "Which of the following is not a built-in Python data structure?",
+    answerOne: "XLinked List",
+    answerTwo: "CHeap",
+    answerThree: "XSet",
+    answerFour: "XDict",
+    answerFive: "XList",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    category: "Python Data Structures",
+    question: "What will be the output of the following Python code?",
+    codeSnippet: `
+    stack = [3, 4, 5]
+    stack.append(6)
+    stack.append(7)
+    print(stack.pop())
+    `,
+    answerOne: "X3",
+    answerTwo: "C7",
+    answerThree: "X5",
+    answerFour: "XNone",
+    answerFive: "XNone of the above",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    category: "Python Data Structures",
+    question: "What is the time complexity to access an element in a Python list by index?",
+    answerOne: "XO(n)",
+    answerTwo: "CO(1)",
+    answerThree: "XO(nlogn)",
+    answerFour: "XO(logn)",
+    answerFive: "XNone of the above",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    category: "Python Data Structures",
+    question: "How do you define an empty set in Python?",
+    answerOne: "Cset()",
+    answerTwo: "X{}",
+    answerThree: "XSet()",
+    answerFour: "X[]",
+    answerFive: "XNone of the above",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    category: "Python Data Structures",
+    question: "What will be the output of the following Python code?",
+    codeSnippet: `
+    dict = {'a': 1, 'b': 2, 'c': 3}
+    print(len(dict))
+    `,
+    answerOne: "X2",
+    answerTwo: "C3",
+    answerThree: "X1",
+    answerFour: "X0",
+    answerFive: "XNone of the above",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    category: "Python Data Structures",
+    question:
+      "What is the time complexity of checking whether an element is present in a Python set?",
+    answerOne: "XO(n)",
+    answerTwo: "CO(1)",
+    answerThree: "XO(nlogn)",
+    answerFour: "XO(logn)",
+    answerFive: "XNone of the above",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    category: "Python Data Structures",
+    question: "What will be the output of the following Python code?",
+    codeSnippet: `
+    dict = {'a': 1, 'b': 2, 'c': 3}
+    print('b' in dict)
+    `,
+    answerOne: "XFalse",
+    answerTwo: "CTrue",
+    answerThree: "XNone",
+    answerFour: "X3",
+    answerFive: "XNone of the above",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    category: "Python Data Structures",
+    question: "Which of the following Python data structures is ordered?",
+    answerOne: "XSet",
+    answerTwo: "XDictionary",
+    answerThree: "XBoth of the above",
+    answerFour: "CNone of the above",
+    answerFive: "XList",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    category: "Python Data Structures",
+    question: "What will be the output of the following Python code?",
+    codeSnippet: `
+    tup = ('physics', 'chemistry', 1997, 2000)
+    print(len(tup))
+    `,
+    answerOne: "X3",
+    answerTwo: "X1",
+    answerThree: "XNone",
+    answerFour: "C4",
+    answerFive: "XNone of the above",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    category: "Python Data Structures",
+    question: "What will be the output of the following Python code?",
+    codeSnippet: `
+    tup1 = (50,)
+    print(type(tup1))
+    `,
+    answerOne: "XInt",
+    answerTwo: "C<class 'tuple'>",
+    answerThree: "X<class 'list'>",
+    answerFour: "X<class 'str'>",
+    answerFive: "XNone of the above",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    category: "Python Data Structures",
+    question: "What will be the output of the following Python code?",
+    codeSnippet: `
+    dict = {['Name']: 'Zara', 'Age': 7}
+    print("Value : %s" %  dict.get('Name'))
+    `,
+    answerOne: "XZara",
+    answerTwo: "XNone",
+    answerThree: "XAge",
+    answerFour: "X7",
+    answerFive: "CTypeError: unhashable type: 'list'",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    category: "Python Data Structures",
+    question: "What will be the output of the following Python code?",
+    codeSnippet: `
+    list1 = ['physics', 'chemistry', 1997, 2000]
+    list1.remove(1997)
+    print(list1)
+    `,
+    answerOne: "C['physics', 'chemistry', 2000]",
+    answerTwo: "X['physics', 'chemistry']",
+    answerThree: "X['physics', 'chemistry', 1997]",
+    answerFour: "X['physics', 'chemistry', 1997, 2000]",
+    answerFive: "XNone of the above",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    category: "Python Data Structures",
+    question: "What is the time complexity to access an element in a Python tuple by index?",
+    answerOne: "XO(n)",
+    answerTwo: "CO(1)",
+    answerThree: "XO(nlogn)",
+    answerFour: "XO(logn)",
+    answerFive: "XNone of the above",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
 ];
 module.exports = questionData;

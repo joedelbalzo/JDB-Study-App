@@ -26566,12 +26566,16 @@ const CodeRunner = ({
   onCorrectChange
 }) => {
   // console.log(question);
+  const iframeRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   const [code, setCode] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(question.code);
   const [output, setOutput] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
   const [correct, setCorrect] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(Boolean);
   const [codingState, setCodingState] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("javascript");
+  const [isIframeLoaded, setIsIframeLoaded] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const [pythonOutput, setPythonOutput] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("");
   const runCode = async () => {
     let results = [];
+    console.log(results);
     const log = console.log;
     try {
       // Redirect console.log to capture output
@@ -26582,6 +26586,7 @@ const CodeRunner = ({
       console.log = log;
     } catch (error) {
       // Restore console.log and display error
+      console.log(error);
       console.log = log;
       const stackTrace = error.stack;
       const lineNumber = stackTrace.match(/<anonymous>:(\d+):\d+/)[1];
@@ -26597,9 +26602,47 @@ const CodeRunner = ({
   const onChange = newValue => {
     setCode(newValue);
   };
-
-  // console.log(codingState);
-
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    function handleMessage(event) {
+      if (event.data && event.data.language && event.data.result) {
+        setPythonOutput(event.data.result.output);
+      }
+    }
+    window.addEventListener("message", handleMessage);
+    return () => {
+      window.removeEventListener("message", handleMessage);
+    };
+  }, []);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    console.log("Python output:", pythonOutput);
+    const answers = `${question.answer[0]}\n${question.answer[1]}\n${question.answer[2]}`;
+    console.log(answers);
+    if (pythonOutput == answers) {
+      console.log("YOU'RE RIGHT");
+    }
+  }, [pythonOutput]);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    if (codingState === "python" && iframeRef.current.contentWindow) {
+      // console.log("it should trigger...");
+      // console.log("question", question);
+      // console.log("populate triggered");
+      const code = question.codePython;
+      console.log(code);
+      iframeRef.current.contentWindow.postMessage({
+        eventType: "populateCode",
+        language: "python",
+        files: [{
+          name: "main.py",
+          content: code
+        }]
+      }, "*");
+    }
+  }, [codingState, isIframeLoaded]);
+  const triggerRun = async ev => {
+    await iframeRef.current.contentWindow.postMessage({
+      eventType: "triggerRun"
+    }, "*");
+  };
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "code-runner"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, question.question), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
@@ -26617,27 +26660,15 @@ const CodeRunner = ({
       setCodingState("python");
       setCode(question.codePython);
     }
-  }, "Python")), codingState === "python" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_ace__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    style: {
-      width: "100%",
-      height: "40vh",
-      border: "1px solid gray",
-      borderRadius: "8px",
-      padding: "4px"
-    },
-    mode: "python",
-    fontSize: 16,
-    theme: "monokai",
-    onChange: onChange,
-    name: "codeArea",
-    setOptions: {
-      enableBasicAutocompletion: true
-    },
-    editorProps: {
-      $blockScrolling: true
-    },
-    value: code
-  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_ace__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  }, "Python")), codingState === "python" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("iframe", {
+    id: "oc-editor",
+    ref: iframeRef,
+    frameBorder: "0",
+    height: "450px",
+    width: "100%",
+    onLoad: () => setIsIframeLoaded(true),
+    src: "https://onecompiler.com/embed/python?codeChangeEvent=true&listenToEvents=true&hideLanguageSelection=true&availableLanguages=true&hideNew=true&hideNewFileOption=true&hideTitle=true&theme=dark"
+  })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_ace__WEBPACK_IMPORTED_MODULE_1__["default"], {
     style: {
       width: "100%",
       height: "40vh",
@@ -26650,17 +26681,17 @@ const CodeRunner = ({
     theme: "monokai",
     onChange: onChange,
     name: "codeArea",
-    setOptions: {
-      enableBasicAutocompletion: true
-    },
     editorProps: {
       $blockScrolling: true
     },
     value: code
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+  }), codingState === "python" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    className: "run-button",
+    onClick: ev => triggerRun(ev)
+  }, "Run Code") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     className: "run-button",
     onClick: runCode
-  }, "Run Code"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", {
+  }, "Run Code"), codingState === "javascript" && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", {
     style: {
       margin: 0
     }
@@ -26669,7 +26700,7 @@ const CodeRunner = ({
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, output.map((line, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
     className: "consoleOutput",
     key: index
-  }, line)))));
+  }, line))))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CodeRunner);
 
@@ -26768,16 +26799,20 @@ const Home = () => {
       return false;
     }
   };
+  const clearStats = () => {
+    console.log("clearing!");
+  };
   correctState ? console.log(correctState) : "";
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "main-coding-question-div"
-  }, currentQuestion && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, console.log(currentQuestion), currentQuestion.codeSnippet ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    id: "codesnippet"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("pre", null, currentQuestion.codeSnippet)) : "", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_CodeRunner__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  }, currentQuestion && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, console.log(currentQuestion), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_CodeRunner__WEBPACK_IMPORTED_MODULE_3__["default"], {
     onCorrectChange: handleCorrectChange,
     question: currentQuestion,
     onChange: () => handleAnswerSubmit(currentQuestion)
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Correct:", correctThisSession), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Incorrect:", incorrectThisSession));
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Correct:", correctThisSession), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Incorrect:", incorrectThisSession), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    className: "run-button",
+    onClick: clearStats
+  }, "Clear Stats"), " ");
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Home);
 
@@ -26836,7 +26871,9 @@ const Home = () => {
   let recentlyCorrect = [];
   const correctlyAnsweredRecently = question => {
     recentlyCorrect.push(question);
+    console.log("should be pushing recently correct");
     if (recentlyCorrect.length >= 25) {
+      console.log("wtf");
       recentlyCorrect.shift();
     }
   };
@@ -26852,6 +26889,8 @@ const Home = () => {
     let random = [...mostlyIncorrect, ...mostlyIncorrect, ...mostlyCorrect];
     return random[Math.floor(Math.random() * random.length)];
   };
+
+  //THIS FUNCTION STILL NEEDS LOCAL STORAGE FUCNTIONS
   const handleAnswerSubmit = async (ev, curr) => {
     ev.preventDefault();
     console.log(curr.timesCorrect, curr.timesIncorrect);
@@ -26888,9 +26927,11 @@ const Home = () => {
         return false;
       }
     }
+    correctlyAnsweredRecently(curr);
+    console.log(recentlyCorrect);
     curr.timesCorrect++;
     correctThisSession === 0 ? setCorrectThisSession(1) : setCorrectThisSession(correctThisSession = correctThisSession + 1);
-    console.log(curr.timesCorrect, curr.timesIncorrect);
+    // console.log(curr.timesCorrect, curr.timesIncorrect);
     console.log("YOU GOT IT RIGHT!");
     await setCurrentQuestion(questionRandomizer());
     setOneIsChecked(false);
@@ -26899,9 +26940,17 @@ const Home = () => {
     setFourIsChecked(false);
     setFiveIsChecked(false);
   };
+  const clearStats = () => {
+    console.log(recentlyCorrect);
+    console.log("clearing!");
+    setCorrectThisSession(0);
+    setIncorrectThisSession(0);
+    recentlyCorrect = [];
+    console.log(recentlyCorrect);
+  };
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "main-question-div"
-  }, currentQuestion && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, console.log(currentQuestion), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, currentQuestion && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "currentQuestion"
   }, currentQuestion.question), currentQuestion.codeSnippet ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     id: "codesnippet"
@@ -26933,8 +26982,12 @@ const Home = () => {
     checked: fiveIsChecked,
     onChange: ev => setFiveIsChecked(ev.target.checked)
   }), currentQuestion.answerFive.slice(1)) : "", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
-    type: "submit"
-  }, "Submit Answer")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Correct:", correctThisSession), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Incorrect:", incorrectThisSession));
+    type: "submit",
+    className: "run-button"
+  }, "Submit Answer")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Correct:", correctThisSession), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Incorrect:", incorrectThisSession), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    className: "run-button",
+    onClick: clearStats
+  }, "Clear Stats"), " ");
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Home);
 

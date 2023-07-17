@@ -38,7 +38,9 @@ const Home = () => {
   let recentlyCorrect = [];
   const correctlyAnsweredRecently = (question) => {
     recentlyCorrect.push(question);
+    console.log("should be pushing recently correct");
     if (recentlyCorrect.length >= 25) {
+      console.log("wtf");
       recentlyCorrect.shift();
     }
   };
@@ -55,6 +57,7 @@ const Home = () => {
     return random[Math.floor(Math.random() * random.length)];
   };
 
+  //THIS FUNCTION STILL NEEDS LOCAL STORAGE FUCNTIONS
   const handleAnswerSubmit = async (ev, curr) => {
     ev.preventDefault();
     console.log(curr.timesCorrect, curr.timesIncorrect);
@@ -96,11 +99,13 @@ const Home = () => {
         return false;
       }
     }
+    correctlyAnsweredRecently(curr);
+    console.log(recentlyCorrect);
     curr.timesCorrect++;
     correctThisSession === 0
       ? setCorrectThisSession(1)
       : setCorrectThisSession((correctThisSession = correctThisSession + 1));
-    console.log(curr.timesCorrect, curr.timesIncorrect);
+    // console.log(curr.timesCorrect, curr.timesIncorrect);
     console.log("YOU GOT IT RIGHT!");
     await setCurrentQuestion(questionRandomizer());
     setOneIsChecked(false);
@@ -110,12 +115,21 @@ const Home = () => {
     setFiveIsChecked(false);
   };
 
+  const clearStats = () => {
+    console.log(recentlyCorrect);
+    console.log("clearing!");
+    setCorrectThisSession(0);
+    setIncorrectThisSession(0);
+    recentlyCorrect = [];
+    console.log(recentlyCorrect);
+  };
+
   return (
     <>
       <div className="main-question-div">
         {currentQuestion && (
           <>
-            {console.log(currentQuestion)}
+            {/* {console.log(currentQuestion)} */}
 
             <div className="currentQuestion">{currentQuestion.question}</div>
             {currentQuestion.codeSnippet ? (
@@ -176,13 +190,18 @@ const Home = () => {
                 ""
               )}
               {/* Repeat the above block for the remaining answer options */}
-              <button type="submit">Submit Answer</button>
+              <button type="submit" className="run-button">
+                Submit Answer
+              </button>
             </form>
           </>
         )}
       </div>
       <p>Correct:{correctThisSession}</p>
       <p>Incorrect:{incorrectThisSession}</p>
+      <button className="run-button" onClick={clearStats}>
+        Clear Stats
+      </button>{" "}
     </>
   );
 };
