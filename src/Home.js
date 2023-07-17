@@ -14,6 +14,8 @@ const Home = () => {
   const [fiveIsChecked, setFiveIsChecked] = useState(false);
   let [correctThisSession, setCorrectThisSession] = useState(0);
   let [incorrectThisSession, setIncorrectThisSession] = useState(0);
+  const [recentlyCorrect, setRecentlyCorrect] = useState([]);
+
   const dispatch = useDispatch();
 
   if (!questions) {
@@ -35,15 +37,15 @@ const Home = () => {
   }, [questions]);
 
   //randomizer in js
-  let recentlyCorrect = [];
   const correctlyAnsweredRecently = (question) => {
-    recentlyCorrect.push(question);
-    console.log("should be pushing recently correct");
-    if (recentlyCorrect.length >= 25) {
-      console.log("wtf");
-      recentlyCorrect.shift();
-    }
+    setRecentlyCorrect((prevRecentlyCorrect) => {
+      if (prevRecentlyCorrect.length >= 25) {
+        return [...prevRecentlyCorrect.slice(1), question];
+      }
+      return [...prevRecentlyCorrect, question];
+    });
   };
+
   const questionRandomizer = () => {
     if (recentlyCorrect.length === 0) {
       // console.log("no length", questions);
@@ -100,7 +102,6 @@ const Home = () => {
       }
     }
     correctlyAnsweredRecently(curr);
-    console.log(recentlyCorrect);
     curr.timesCorrect++;
     correctThisSession === 0
       ? setCorrectThisSession(1)
@@ -120,8 +121,7 @@ const Home = () => {
     console.log("clearing!");
     setCorrectThisSession(0);
     setIncorrectThisSession(0);
-    recentlyCorrect = [];
-    console.log(recentlyCorrect);
+    setRecentlyCorrect([]);
   };
 
   return (

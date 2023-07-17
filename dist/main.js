@@ -26850,6 +26850,7 @@ const Home = () => {
   const [fiveIsChecked, setFiveIsChecked] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   let [correctThisSession, setCorrectThisSession] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
   let [incorrectThisSession, setIncorrectThisSession] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
+  const [recentlyCorrect, setRecentlyCorrect] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
   const dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useDispatch)();
   if (!questions) {
     console.log("no questions!");
@@ -26868,14 +26869,13 @@ const Home = () => {
   }, [questions]);
 
   //randomizer in js
-  let recentlyCorrect = [];
   const correctlyAnsweredRecently = question => {
-    recentlyCorrect.push(question);
-    console.log("should be pushing recently correct");
-    if (recentlyCorrect.length >= 25) {
-      console.log("wtf");
-      recentlyCorrect.shift();
-    }
+    setRecentlyCorrect(prevRecentlyCorrect => {
+      if (prevRecentlyCorrect.length >= 25) {
+        return [...prevRecentlyCorrect.slice(1), question];
+      }
+      return [...prevRecentlyCorrect, question];
+    });
   };
   const questionRandomizer = () => {
     if (recentlyCorrect.length === 0) {
@@ -26928,7 +26928,6 @@ const Home = () => {
       }
     }
     correctlyAnsweredRecently(curr);
-    console.log(recentlyCorrect);
     curr.timesCorrect++;
     correctThisSession === 0 ? setCorrectThisSession(1) : setCorrectThisSession(correctThisSession = correctThisSession + 1);
     // console.log(curr.timesCorrect, curr.timesIncorrect);
@@ -26945,8 +26944,7 @@ const Home = () => {
     console.log("clearing!");
     setCorrectThisSession(0);
     setIncorrectThisSession(0);
-    recentlyCorrect = [];
-    console.log(recentlyCorrect);
+    setRecentlyCorrect([]);
   };
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "main-question-div"
