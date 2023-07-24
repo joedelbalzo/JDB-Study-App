@@ -10,36 +10,33 @@ const CodeRunner = ({ question, onCorrectChange }) => {
   const iframeRef = useRef(null);
   const [code, setCode] = useState(question.code);
   const [output, setOutput] = useState([]);
-  const [correct, setCorrect] = useState(Boolean);
+  const [codeIsCorrect, setCodeIsCorrect] = useState(Boolean);
   const [codingState, setCodingState] = useState("javascript");
   const [isIframeLoaded, setIsIframeLoaded] = useState(false);
   const [pythonOutput, setPythonOutput] = useState("");
 
   const runCode = async () => {
     let results = [];
-    console.log(results);
     const log = console.log;
     try {
-      // Redirect console.log to capture output
       console.log = (...args) => {
         results.push(args.join(" "));
       };
       eval(code);
       console.log = log;
     } catch (error) {
-      // Restore console.log and display error
       console.log(error);
       console.log = log;
       const stackTrace = error.stack;
       const lineNumber = stackTrace.match(/<anonymous>:(\d+):\d+/)[1];
       results.push(`Error: ${error} at line ${lineNumber}`);
-      // results.push(`Error: ${error}`);
     }
     let isCorrect =
-      results[0] === question.answer[0] &&
-      results[1] === question.answer[1] &&
-      results[2] === question.answer[2];
-    await setCorrect(isCorrect);
+      results[0] === question.answer[0].toString() &&
+      results[1] === question.answer[1].toString() &&
+      results[2] === question.answer[2].toString();
+    console.log(results, isCorrect);
+    await setCodeIsCorrect(isCorrect);
     await onCorrectChange(isCorrect);
     setOutput(results);
   };
@@ -71,9 +68,6 @@ const CodeRunner = ({ question, onCorrectChange }) => {
 
   useEffect(() => {
     if (codingState === "python" && iframeRef.current.contentWindow) {
-      // console.log("it should trigger...");
-      // console.log("question", question);
-      // console.log("populate triggered");
       const code = question.codePython;
       console.log(code);
       iframeRef.current.contentWindow.postMessage(

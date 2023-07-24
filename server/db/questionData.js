@@ -1400,5 +1400,56 @@ const questionData = [
     timesCorrect: 0,
     timesIncorrect: 0,
   },
+  {
+    category: "Linked Lists",
+    question: "What does this code snippet accomplish?",
+    codeSnippet: `
+    const fakeFunctionName = function(head) {
+      let prev = null;
+      let current = head;
+      let next = null;
+  
+      while(current){
+          next = current.next;
+          current.next = prev;
+          prev = current;
+          current = next;
+      }
+      return prev
+  };
+    `,
+    answerOne: "XFinds middle node",
+    answerTwo: "XFinds list length",
+    answerThree: "CReverses Linked List",
+    answerFour: "XAdds new nodes",
+    answerFive: "XNone of the above",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    category: "Linked Lists",
+    question: "What does this code snippet accomplish?",
+    codeSnippet: `
+    def fakeFunctionName (self, head):
+      prev = None
+      current = head
+      after = None
+
+      while(current):
+          after = current.next
+          current.next = prev
+          prev = current
+          current = after
+      
+      return prev
+    `,
+    answerOne: "XFinds middle node",
+    answerTwo: "XFinds list length",
+    answerThree: "CReverses Linked List",
+    answerFour: "XAdds new nodes",
+    answerFive: "XNone of the above",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
 ];
 module.exports = questionData;

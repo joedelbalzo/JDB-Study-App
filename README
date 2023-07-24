@@ -1,0 +1,10 @@
+Tasks to still accomplish:
+-Incorrect and Correct highlighting
+-Broken submit on coding problems.
+-Recently Correct function isn't working
+-Local Storage functions for stats
+
+Looking down the pipeline:
+-Oauth with Google and Github so you can log in and save your recently correct and your stats
+-Build my own python compiler
+-More fill in the blank questions

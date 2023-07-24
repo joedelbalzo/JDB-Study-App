@@ -4,33 +4,25 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import CodeRunner from "./CodeRunner";
 
-const Home = () => {
+const CodingQuestions = ({ updateCorrectState, updateIncorrectState, prop }) => {
+  const dispatch = useDispatch();
   const { codingQuestions } = useSelector((state) => state);
-  const [selectedAnswer, setSelectedAnswer] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState("");
   let [correctThisSession, setCorrectThisSession] = useState(0);
   let [incorrectThisSession, setIncorrectThisSession] = useState(0);
-  const [correctState, setCorrectState] = useState(false);
+  let [correctState, setCorrectState] = useState([]);
 
   const handleCorrectChange = (newCorrectState) => {
     setCorrectState(newCorrectState);
     if (correctState === true) {
-      ("");
       handleAnswerSubmit(currentQuestion);
     }
   };
-
-  const dispatch = useDispatch();
 
   if (!codingQuestions) {
     console.log("no questions!");
     return null;
   }
-
-  // if (correct) {
-  //   console.log(correct);
-  // }
-
   useEffect(() => {
     console.log("...fetching");
     dispatch(fetchCodingQuestions());
@@ -64,38 +56,28 @@ const Home = () => {
     return random[Math.floor(Math.random() * random.length)];
   };
 
-  const handleAnswerSubmit = async (curr) => {
-    console.log("in the handleAnswerSubmit function");
+  useEffect(() => {
+    console.log("in the useEffect");
     if (correctState === true) {
-      curr.timesCorrect++;
-      correctThisSession === 0
-        ? setCorrectThisSession(1)
-        : setCorrectThisSession((correctThisSession = correctThisSession + 1));
-      console.log(curr.timesCorrect, curr.timesIncorrect);
-      console.log("YOU GOT IT RIGHT!");
-      await setCurrentQuestion(questionRandomizer());
-    } else {
-      curr.timesIncorrect++;
-      incorrectThisSession === 0
-        ? setIncorrectThisSession(1)
-        : setIncorrectThisSession((incorrectThisSession = incorrectThisSession + 1));
-      await setCurrentQuestion(questionRandomizer());
-      return false;
+      console.log("YOU GOT IT!");
+      updateCorrectState((prevState) => prevState + 1);
+      currentQuestion.timesCorrect++;
     }
-  };
-
-  const clearStats = () => {
-    console.log("clearing!");
-  };
-
-  correctState ? console.log(correctState) : "";
+    if (correctState === false) {
+      updateIncorrectState((prevState) => prevState + 1);
+      currentQuestion.timesIncorrect++;
+      return false;
+    } else {
+      setCorrectState("");
+    }
+    setCurrentQuestion(questionRandomizer());
+  }, [correctState]);
 
   return (
     <>
       <div className="main-coding-question-div">
         {currentQuestion && (
           <>
-            {console.log(currentQuestion)}
             <CodeRunner
               onCorrectChange={handleCorrectChange}
               question={currentQuestion}
@@ -104,13 +86,8 @@ const Home = () => {
           </>
         )}
       </div>
-      <p>Correct:{correctThisSession}</p>
-      <p>Incorrect:{incorrectThisSession}</p>
-      <button className="run-button" onClick={clearStats}>
-        Clear Stats
-      </button>{" "}
     </>
   );
 };
 
-export default Home;
+export default CodingQuestions;

@@ -26508,28 +26508,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
 /* harmony import */ var _Home__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Home */ "./src/Home.js");
-/* harmony import */ var _Nav__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Nav */ "./src/Nav.js");
-/* harmony import */ var _Coding_Questions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Coding-Questions */ "./src/Coding-Questions.js");
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./store */ "./src/store/index.js");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-
-
-
-
-
 
 
 const App = () => {
-  const dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_5__.useDispatch)();
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Nav__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Routes, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
-    path: "/",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Home__WEBPACK_IMPORTED_MODULE_1__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
-    path: "/codingquestions",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Coding_Questions__WEBPACK_IMPORTED_MODULE_3__["default"], null)
-  })));
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Home__WEBPACK_IMPORTED_MODULE_1__["default"], null));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);
 
@@ -26569,33 +26552,29 @@ const CodeRunner = ({
   const iframeRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   const [code, setCode] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(question.code);
   const [output, setOutput] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
-  const [correct, setCorrect] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(Boolean);
+  const [codeIsCorrect, setCodeIsCorrect] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(Boolean);
   const [codingState, setCodingState] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("javascript");
   const [isIframeLoaded, setIsIframeLoaded] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [pythonOutput, setPythonOutput] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("");
   const runCode = async () => {
     let results = [];
-    console.log(results);
     const log = console.log;
     try {
-      // Redirect console.log to capture output
       console.log = (...args) => {
         results.push(args.join(" "));
       };
       eval(code);
       console.log = log;
     } catch (error) {
-      // Restore console.log and display error
       console.log(error);
       console.log = log;
       const stackTrace = error.stack;
       const lineNumber = stackTrace.match(/<anonymous>:(\d+):\d+/)[1];
       results.push(`Error: ${error} at line ${lineNumber}`);
-      // results.push(`Error: ${error}`);
     }
-
-    let isCorrect = results[0] === question.answer[0] && results[1] === question.answer[1] && results[2] === question.answer[2];
-    await setCorrect(isCorrect);
+    let isCorrect = results[0] === question.answer[0].toString() && results[1] === question.answer[1].toString() && results[2] === question.answer[2].toString();
+    console.log(results, isCorrect);
+    await setCodeIsCorrect(isCorrect);
     await onCorrectChange(isCorrect);
     setOutput(results);
   };
@@ -26623,9 +26602,6 @@ const CodeRunner = ({
   }, [pythonOutput]);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     if (codingState === "python" && iframeRef.current.contentWindow) {
-      // console.log("it should trigger...");
-      // console.log("question", question);
-      // console.log("populate triggered");
       const code = question.codePython;
       console.log(code);
       iframeRef.current.contentWindow.postMessage({
@@ -26706,10 +26682,10 @@ const CodeRunner = ({
 
 /***/ }),
 
-/***/ "./src/Coding-Questions.js":
-/*!*********************************!*\
-  !*** ./src/Coding-Questions.js ***!
-  \*********************************/
+/***/ "./src/CodingQuestions.js":
+/*!********************************!*\
+  !*** ./src/CodingQuestions.js ***!
+  \********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -26727,32 +26703,29 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const Home = () => {
+const CodingQuestions = ({
+  updateCorrectState,
+  updateIncorrectState,
+  prop
+}) => {
+  const dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useDispatch)();
   const {
     codingQuestions
   } = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useSelector)(state => state);
-  const [selectedAnswer, setSelectedAnswer] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
   const [currentQuestion, setCurrentQuestion] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("");
   let [correctThisSession, setCorrectThisSession] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
   let [incorrectThisSession, setIncorrectThisSession] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
-  const [correctState, setCorrectState] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  let [correctState, setCorrectState] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
   const handleCorrectChange = newCorrectState => {
     setCorrectState(newCorrectState);
     if (correctState === true) {
-      "";
       handleAnswerSubmit(currentQuestion);
     }
   };
-  const dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useDispatch)();
   if (!codingQuestions) {
     console.log("no questions!");
     return null;
   }
-
-  // if (correct) {
-  //   console.log(correct);
-  // }
-
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     console.log("...fetching");
     dispatch((0,_store__WEBPACK_IMPORTED_MODULE_1__.fetchCodingQuestions)());
@@ -26784,37 +26757,31 @@ const Home = () => {
     let random = [...mostlyIncorrect, ...mostlyIncorrect, ...mostlyCorrect];
     return random[Math.floor(Math.random() * random.length)];
   };
-  const handleAnswerSubmit = async curr => {
-    console.log("in the handleAnswerSubmit function");
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    console.log("in the useEffect");
     if (correctState === true) {
-      curr.timesCorrect++;
-      correctThisSession === 0 ? setCorrectThisSession(1) : setCorrectThisSession(correctThisSession = correctThisSession + 1);
-      console.log(curr.timesCorrect, curr.timesIncorrect);
-      console.log("YOU GOT IT RIGHT!");
-      await setCurrentQuestion(questionRandomizer());
-    } else {
-      curr.timesIncorrect++;
-      incorrectThisSession === 0 ? setIncorrectThisSession(1) : setIncorrectThisSession(incorrectThisSession = incorrectThisSession + 1);
-      await setCurrentQuestion(questionRandomizer());
-      return false;
+      console.log("YOU GOT IT!");
+      updateCorrectState(prevState => prevState + 1);
+      currentQuestion.timesCorrect++;
     }
-  };
-  const clearStats = () => {
-    console.log("clearing!");
-  };
-  correctState ? console.log(correctState) : "";
+    if (correctState === false) {
+      updateIncorrectState(prevState => prevState + 1);
+      currentQuestion.timesIncorrect++;
+      return false;
+    } else {
+      setCorrectState("");
+    }
+    setCurrentQuestion(questionRandomizer());
+  }, [correctState]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "main-coding-question-div"
-  }, currentQuestion && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, console.log(currentQuestion), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_CodeRunner__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  }, currentQuestion && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_CodeRunner__WEBPACK_IMPORTED_MODULE_3__["default"], {
     onCorrectChange: handleCorrectChange,
     question: currentQuestion,
     onChange: () => handleAnswerSubmit(currentQuestion)
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Correct:", correctThisSession), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Incorrect:", incorrectThisSession), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
-    className: "run-button",
-    onClick: clearStats
-  }, "Clear Stats"), " ");
+  }))));
 };
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Home);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CodingQuestions);
 
 /***/ }),
 
@@ -26833,33 +26800,153 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./store */ "./src/store/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var _Nav__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Nav */ "./src/Nav.js");
+/* harmony import */ var _MCQ__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./MCQ */ "./src/MCQ.js");
+/* harmony import */ var _CodingQuestions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./CodingQuestions */ "./src/CodingQuestions.js");
+
+
+
+
 
 
 
 
 const Home = () => {
+  const [selectedAnswer, setSelectedAnswer] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
+  const [currentQuestion, setCurrentQuestion] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("");
+  let [correctThisSession, setCorrectThisSession] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
+  let [incorrectThisSession, setIncorrectThisSession] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
+  const [recentlyCorrect, setRecentlyCorrect] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
+  const [correctClass, setCorrectClass] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("");
+  const [correctState, setCorrectState] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
+  const [incorrectState, setIncorrectState] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
+  const currentPath = window.location.pathname;
+  const dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useDispatch)();
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    dispatch((0,_store__WEBPACK_IMPORTED_MODULE_1__.fetchQuestions)());
+    setCorrectClass("");
+    console.log(JSON.parse(localStorage.getItem("numberCorrect")));
+    setCorrectThisSession(JSON.parse(localStorage.getItem("numberCorrect")));
+    setIncorrectThisSession(JSON.parse(localStorage.getItem("numberIncorrect")));
+  }, []);
+  //insert local storage functions here
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    setCorrectClass("correct");
+    setCorrectThisSession(correctThisSession + 1);
+    localStorage.setItem("numberCorrect", correctState);
+    localStorage.setItem("questionsCorrect", JSON.stringify(recentlyCorrect));
+  }, [correctState]);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    setCorrectClass("incorrect");
+    setIncorrectThisSession(incorrectThisSession + 1);
+    localStorage.setItem("numberIncorrect", incorrectState);
+  }, [incorrectState]);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    correctClass !== "" ? setTimeout(() => setCorrectClass(""), 2500) : setCorrectClass("");
+  }, [correctClass]);
+
+  //randomizer in js
+  const correctlyAnsweredRecently = question => {
+    setRecentlyCorrect(prevRecentlyCorrect => {
+      if (prevRecentlyCorrect.length >= 25) {
+        return [...prevRecentlyCorrect.slice(1), question];
+      }
+      return [...prevRecentlyCorrect, question];
+    });
+  };
+  const clearStats = () => {
+    setCorrectThisSession(0);
+    setIncorrectThisSession(0);
+    setRecentlyCorrect([]);
+    setCorrectClass("");
+    localStorage.removeItem("numberCorrect");
+    localStorage.removeItem("numberIncorrect");
+    localStorage.removeItem("questionsCorrect");
+  };
+  console.log(setCorrectState, setIncorrectState);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Nav__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Routes, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
+    path: "/",
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_MCQ__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      updateCorrectState: setCorrectState,
+      updateIncorrectState: setIncorrectState
+    })
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
+    path: "/codingquestions",
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_CodingQuestions__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      updateCorrectState: setCorrectState,
+      updateIncorrectState: setIncorrectState,
+      prop: 123
+    })
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "mcq-stats"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    className: correctClass === "correct" ? "correct-answer" : "correct-stats-button",
+    style: {
+      flex: 1
+    }
+  }, "Correct:", correctThisSession), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    className: correctClass === "incorrect" ? "incorrect-answer" : "incorrect-stats-button",
+    style: {
+      flex: 1
+    }
+  }, "Incorrect:", incorrectThisSession), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    className: "clear-stats-button",
+    style: {
+      flex: 1
+    },
+    onClick: clearStats
+  }, "Clear Stats"), " "));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Home);
+
+/***/ }),
+
+/***/ "./src/MCQ.js":
+/*!********************!*\
+  !*** ./src/MCQ.js ***!
+  \********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./store */ "./src/store/index.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+
+
+
+const MCQ = ({
+  updateCorrectState,
+  updateIncorrectState
+}) => {
   const {
     questions
   } = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useSelector)(state => state);
-  const [selectedAnswer, setSelectedAnswer] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
   const [currentQuestion, setCurrentQuestion] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("");
   const [oneIsChecked, setOneIsChecked] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [twoIsChecked, setTwoIsChecked] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [threeIsChecked, setThreeIsChecked] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [fourIsChecked, setFourIsChecked] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [fiveIsChecked, setFiveIsChecked] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
-  let [correctThisSession, setCorrectThisSession] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
-  let [incorrectThisSession, setIncorrectThisSession] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
   const [recentlyCorrect, setRecentlyCorrect] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
   const dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useDispatch)();
   if (!questions) {
     console.log("no questions!");
     return null;
   }
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    console.log("...fetching");
-    dispatch((0,_store__WEBPACK_IMPORTED_MODULE_1__.fetchQuestions)());
-  }, []);
+
+  // useEffect(() => {
+  //   console.log("...fetching");
+  //   dispatch(fetchQuestions());
+  // }, []);
+
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     try {
       setCurrentQuestion(questionRandomizer());
@@ -26879,7 +26966,7 @@ const Home = () => {
   };
   const questionRandomizer = () => {
     if (recentlyCorrect.length === 0) {
-      // console.log("no length", questions);
+      console.log(recentlyCorrect);
       const question = questions[Math.floor(Math.random() * questions.length)];
       return question;
     }
@@ -26889,11 +26976,8 @@ const Home = () => {
     let random = [...mostlyIncorrect, ...mostlyIncorrect, ...mostlyCorrect];
     return random[Math.floor(Math.random() * random.length)];
   };
-
-  //THIS FUNCTION STILL NEEDS LOCAL STORAGE FUCNTIONS
   const handleAnswerSubmit = async (ev, curr) => {
     ev.preventDefault();
-    console.log(curr.timesCorrect, curr.timesIncorrect);
     const correctAnswer = [];
     if (curr.answerOne[0] === "C") {
       correctAnswer.push(true);
@@ -26910,41 +26994,28 @@ const Home = () => {
     if (curr.answerFive && curr.answerFive[0] === "C") {
       correctAnswer.push(true);
     } else correctAnswer.push(false);
-    console.log("correct answer array", correctAnswer);
     const checked = [oneIsChecked, twoIsChecked, threeIsChecked, fourIsChecked, fiveIsChecked];
+    let correct = true;
     for (let i = 0; i < correctAnswer.length; i++) {
-      if (correctAnswer[i] !== checked[i]) {
-        console.log(curr.timesCorrect, curr.timesIncorrect);
-        console.log("YOU GOT IT WRONG BABYYYYYYYYYY");
+      if (correctAnswer[i] === checked[i]) {
+        correct = true;
+      } else if (correctAnswer[i] !== checked[i]) {
+        updateIncorrectState(prevState => prevState + 1);
         curr.timesIncorrect++;
-        incorrectThisSession === 0 ? setIncorrectThisSession(1) : setIncorrectThisSession(incorrectThisSession = incorrectThisSession + 1);
-        await setCurrentQuestion(questionRandomizer());
-        setOneIsChecked(false);
-        setTwoIsChecked(false);
-        setThreeIsChecked(false);
-        setFourIsChecked(false);
-        setFiveIsChecked(false);
-        return false;
+        correct = false;
+        break;
       }
     }
-    correctlyAnsweredRecently(curr);
-    curr.timesCorrect++;
-    correctThisSession === 0 ? setCorrectThisSession(1) : setCorrectThisSession(correctThisSession = correctThisSession + 1);
-    // console.log(curr.timesCorrect, curr.timesIncorrect);
-    console.log("YOU GOT IT RIGHT!");
+    if (correct === true) {
+      updateCorrectState(prevState => prevState + 1);
+      curr.timesCorrect++;
+    }
     await setCurrentQuestion(questionRandomizer());
     setOneIsChecked(false);
     setTwoIsChecked(false);
     setThreeIsChecked(false);
     setFourIsChecked(false);
     setFiveIsChecked(false);
-  };
-  const clearStats = () => {
-    console.log(recentlyCorrect);
-    console.log("clearing!");
-    setCorrectThisSession(0);
-    setIncorrectThisSession(0);
-    setRecentlyCorrect([]);
   };
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "main-question-div"
@@ -26982,12 +27053,9 @@ const Home = () => {
   }), currentQuestion.answerFive.slice(1)) : "", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     type: "submit",
     className: "run-button"
-  }, "Submit Answer")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Correct:", correctThisSession), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Incorrect:", incorrectThisSession), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
-    className: "run-button",
-    onClick: clearStats
-  }, "Clear Stats"), " ");
+  }, "Submit Answer")))));
 };
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Home);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MCQ);
 
 /***/ }),
 
@@ -27004,9 +27072,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
 /* harmony import */ var _Home__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Home */ "./src/Home.js");
-/* harmony import */ var _Coding_Questions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Coding-Questions */ "./src/Coding-Questions.js");
+/* harmony import */ var _CodingQuestions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CodingQuestions */ "./src/CodingQuestions.js");
+/* harmony import */ var _images_download_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./images/download.png */ "./src/images/download.png");
+
 
 
 
@@ -27014,12 +27084,18 @@ __webpack_require__.r(__webpack_exports__);
 const Nav = () => {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "algo-nav"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-    to: "/",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Home__WEBPACK_IMPORTED_MODULE_1__["default"], null)
-  }, "multiple choice"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-    to: "/codingquestions",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Coding_Questions__WEBPACK_IMPORTED_MODULE_2__["default"], null)
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+    src: _images_download_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+    style: {
+      width: "100px",
+      height: "100px",
+      WebkitFilter: "invert(100%)",
+      filter: "invert(100%)"
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+    to: "/"
+  }, "multiple choice"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+    to: "/codingquestions"
   }, "coding"));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Nav);
@@ -29311,6 +29387,21 @@ module.exports.diff_match_patch = diff_match_patch;
 module.exports.DIFF_DELETE = DIFF_DELETE;
 module.exports.DIFF_INSERT = DIFF_INSERT;
 module.exports.DIFF_EQUAL = DIFF_EQUAL;
+
+/***/ }),
+
+/***/ "./src/images/download.png":
+/*!*********************************!*\
+  !*** ./src/images/download.png ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + "images/download.png");
 
 /***/ }),
 
@@ -78282,6 +78373,29 @@ const isThenable = (thing) =>
 /******/ 			if (!module.children) module.children = [];
 /******/ 			return module;
 /******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/publicPath */
+/******/ 	(() => {
+/******/ 		var scriptUrl;
+/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
+/******/ 		var document = __webpack_require__.g.document;
+/******/ 		if (!scriptUrl && document) {
+/******/ 			if (document.currentScript)
+/******/ 				scriptUrl = document.currentScript.src;
+/******/ 			if (!scriptUrl) {
+/******/ 				var scripts = document.getElementsByTagName("script");
+/******/ 				if(scripts.length) {
+/******/ 					var i = scripts.length - 1;
+/******/ 					while (i > -1 && !scriptUrl) scriptUrl = scripts[i--].src;
+/******/ 				}
+/******/ 			}
+/******/ 		}
+/******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
+/******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
+/******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
+/******/ 		scriptUrl = scriptUrl.replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
+/******/ 		__webpack_require__.p = scriptUrl;
 /******/ 	})();
 /******/ 	
 /************************************************************************/

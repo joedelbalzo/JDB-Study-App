@@ -1,17 +1,23 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
 import Home from "./Home";
-import CodingQuestions from "./Coding-Questions";
+import CodingQuestions from "./CodingQuestions";
+import logo from "./images/download.png";
 
 const Nav = () => {
   return (
     <div className="algo-nav">
-      <Link to={"/"} element={<Home />}>
-        multiple choice
-      </Link>
-      <Link to={"/codingquestions"} element={<CodingQuestions />}>
-        coding
-      </Link>
+      <img
+        src={logo}
+        style={{
+          width: "100px",
+          height: "100px",
+          WebkitFilter: "invert(100%)",
+          filter: "invert(100%)",
+        }}
+      />
+      <Link to={"/"}>multiple choice</Link>
+      <Link to={"/codingquestions"}>coding</Link>
     </div>
   );
 };
