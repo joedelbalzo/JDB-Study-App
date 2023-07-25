@@ -17,6 +17,27 @@ app.get("/api/questions", async (req, res, next) => {
     console.log(err);
   }
 });
+app.put("/api/questions", async (req, res, next) => {
+  try {
+    const id = req.body.curr.id;
+    const question = await Question.findByPk(id);
+    const submit = req.body.submit;
+    console.log("correct", question.timesCorrect, "incorrect", question.timesIncorrect);
+    if (submit === "correct") {
+      await question.update({
+        attributes: [question.timesCorrect++],
+      });
+    } else if (submit === "incorrect") {
+      await question.update({
+        attributes: [question.timesIncorrect++],
+      });
+    }
+    console.log("correct", question.timesCorrect, "incorrect", question.timesIncorrect);
+    res.send(await Question.findAll());
+  } catch (err) {
+    console.log(err);
+  }
+});
 app.get("/api/codingquestions", async (req, res, next) => {
   try {
     const codingQuestions = await CodingQuestion.findAll();

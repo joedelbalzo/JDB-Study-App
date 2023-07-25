@@ -1,8 +1,9 @@
 Tasks to still accomplish:
--Incorrect and Correct highlighting
+-Incorrect and Correct highlighting -- check
 -Broken submit on coding problems.
 -Recently Correct function isn't working
 -Local Storage functions for stats
+-db storage for stats -- check!
 
 Looking down the pipeline:
 -Oauth with Google and Github so you can log in and save your recently correct and your stats

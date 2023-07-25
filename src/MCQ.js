@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { fetchQuestions } from "./store";
+import { fetchQuestions, lastSubmittedAnswer } from "./store";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 
@@ -18,11 +18,6 @@ const MCQ = ({ updateCorrectState, updateIncorrectState }) => {
     console.log("no questions!");
     return null;
   }
-
-  // useEffect(() => {
-  //   console.log("...fetching");
-  //   dispatch(fetchQuestions());
-  // }, []);
 
   useEffect(() => {
     try {
@@ -43,14 +38,18 @@ const MCQ = ({ updateCorrectState, updateIncorrectState }) => {
   };
 
   const questionRandomizer = () => {
+    console.log("recently correct", recentlyCorrect);
     if (recentlyCorrect.length === 0) {
-      console.log(recentlyCorrect);
       const question = questions[Math.floor(Math.random() * questions.length)];
       return question;
     }
     let notRecentlyCorrect = questions.filter((q) => !recentlyCorrect.includes(q));
+    console.log("not recently correct", notRecentlyCorrect);
     let mostlyCorrect = notRecentlyCorrect.filter((q) => q.timesIncorrect + 5 < q.timesCorrect);
+    console.log("mostly correct", mostlyCorrect);
     let mostlyIncorrect = notRecentlyCorrect.filter((q) => q.timesIncorrect + 5 >= q.timesCorrect);
+    console.log("mostly incorrect", mostlyIncorrect);
+
     let random = [...mostlyIncorrect, ...mostlyIncorrect, ...mostlyCorrect];
     return random[Math.floor(Math.random() * random.length)];
   };
@@ -81,7 +80,7 @@ const MCQ = ({ updateCorrectState, updateIncorrectState }) => {
         correct = true;
       } else if (correctAnswer[i] !== checked[i]) {
         updateIncorrectState((prevState) => prevState + 1);
-        curr.timesIncorrect++;
+        dispatch(lastSubmittedAnswer(curr, "incorrect"));
         correct = false;
         break;
       }
@@ -89,6 +88,8 @@ const MCQ = ({ updateCorrectState, updateIncorrectState }) => {
     if (correct === true) {
       updateCorrectState((prevState) => prevState + 1);
       curr.timesCorrect++;
+      correctlyAnsweredRecently(curr);
+      dispatch(lastSubmittedAnswer(curr, "correct"));
     }
     await setCurrentQuestion(questionRandomizer());
     setOneIsChecked(false);

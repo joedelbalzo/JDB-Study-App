@@ -16,9 +16,10 @@ body {
 
 .algo-nav {
   margin: 0;
-  padding: 0;
+  padding: 0.5rem 0;
   background-color: #181818;
   display: flex;
+  height: 100px;
   justify-content: space-evenly;
   align-items: center;
   padding-bottom: 2vh;
@@ -71,12 +72,15 @@ form > button {
   margin: auto;
   border: 1px solid gray;
   background-color: #383838;
-  font-size: calc(12px + 1vw);
+  font-size: calc(8px + 1vw);
   border-radius: 4px;
   word-wrap: break-word;
   width: min(fit-content, 80vw);
   padding: 0.1rem;
   text-align: left;
+}
+pre {
+  margin: 0 auto;
 }
 /* CodeRunner.css */
 
@@ -137,6 +141,7 @@ form > button {
   background-color: red;
   color: #d4d4d4;
   font-size: calc(12px + 1vw);
+  flex: 1;
   margin-bottom: 20px;
   padding: 7px 15px;
   margin: 10px 2px;

@@ -8,8 +8,6 @@ import MCQ from "./MCQ";
 import CodingQuestions from "./CodingQuestions";
 
 const Home = () => {
-  const [selectedAnswer, setSelectedAnswer] = useState([]);
-  const [currentQuestion, setCurrentQuestion] = useState("");
   let [correctThisSession, setCorrectThisSession] = useState(0);
   let [incorrectThisSession, setIncorrectThisSession] = useState(0);
   const [recentlyCorrect, setRecentlyCorrect] = useState([]);
@@ -66,7 +64,6 @@ const Home = () => {
     localStorage.removeItem("questionsCorrect");
   };
 
-  console.log(setCorrectState, setIncorrectState);
   return (
     <>
       <Nav />

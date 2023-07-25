@@ -26813,8 +26813,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const Home = () => {
-  const [selectedAnswer, setSelectedAnswer] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
-  const [currentQuestion, setCurrentQuestion] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("");
   let [correctThisSession, setCorrectThisSession] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
   let [incorrectThisSession, setIncorrectThisSession] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
   const [recentlyCorrect, setRecentlyCorrect] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
@@ -26865,7 +26863,6 @@ const Home = () => {
     localStorage.removeItem("numberIncorrect");
     localStorage.removeItem("questionsCorrect");
   };
-  console.log(setCorrectState, setIncorrectState);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Nav__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Routes, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
     path: "/",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_MCQ__WEBPACK_IMPORTED_MODULE_4__["default"], {
@@ -26941,12 +26938,6 @@ const MCQ = ({
     console.log("no questions!");
     return null;
   }
-
-  // useEffect(() => {
-  //   console.log("...fetching");
-  //   dispatch(fetchQuestions());
-  // }, []);
-
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     try {
       setCurrentQuestion(questionRandomizer());
@@ -26965,14 +26956,17 @@ const MCQ = ({
     });
   };
   const questionRandomizer = () => {
+    console.log("recently correct", recentlyCorrect);
     if (recentlyCorrect.length === 0) {
-      console.log(recentlyCorrect);
       const question = questions[Math.floor(Math.random() * questions.length)];
       return question;
     }
     let notRecentlyCorrect = questions.filter(q => !recentlyCorrect.includes(q));
+    console.log("not recently correct", notRecentlyCorrect);
     let mostlyCorrect = notRecentlyCorrect.filter(q => q.timesIncorrect + 5 < q.timesCorrect);
+    console.log("mostly correct", mostlyCorrect);
     let mostlyIncorrect = notRecentlyCorrect.filter(q => q.timesIncorrect + 5 >= q.timesCorrect);
+    console.log("mostly incorrect", mostlyIncorrect);
     let random = [...mostlyIncorrect, ...mostlyIncorrect, ...mostlyCorrect];
     return random[Math.floor(Math.random() * random.length)];
   };
@@ -27001,7 +26995,7 @@ const MCQ = ({
         correct = true;
       } else if (correctAnswer[i] !== checked[i]) {
         updateIncorrectState(prevState => prevState + 1);
-        curr.timesIncorrect++;
+        dispatch((0,_store__WEBPACK_IMPORTED_MODULE_1__.lastSubmittedAnswer)(curr, "incorrect"));
         correct = false;
         break;
       }
@@ -27009,6 +27003,8 @@ const MCQ = ({
     if (correct === true) {
       updateCorrectState(prevState => prevState + 1);
       curr.timesCorrect++;
+      correctlyAnsweredRecently(curr);
+      dispatch((0,_store__WEBPACK_IMPORTED_MODULE_1__.lastSubmittedAnswer)(curr, "correct"));
     }
     await setCurrentQuestion(questionRandomizer());
     setOneIsChecked(false);
@@ -27075,7 +27071,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
 /* harmony import */ var _Home__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Home */ "./src/Home.js");
 /* harmony import */ var _CodingQuestions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CodingQuestions */ "./src/CodingQuestions.js");
-/* harmony import */ var _images_download_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./images/download.png */ "./src/images/download.png");
+/* harmony import */ var _images_logorectangle_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./images/logorectangle.png */ "./src/images/logorectangle.png");
 
 
 
@@ -27084,15 +27080,25 @@ __webpack_require__.r(__webpack_exports__);
 const Nav = () => {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "algo-nav"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-    src: _images_download_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     style: {
-      width: "100px",
-      height: "100px",
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center"
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+    src: _images_logorectangle_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+    style: {
+      width: "60px",
+      height: "auto",
       WebkitFilter: "invert(100%)",
       filter: "invert(100%)"
     }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
+    style: {
+      fontVariant: "small-caps"
+    }
+  }, "AlgoRhythm")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
     to: "/"
   }, "multiple choice"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
     to: "/codingquestions"
@@ -27113,7 +27119,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
 /* harmony export */   fetchCodingQuestions: () => (/* binding */ fetchCodingQuestions),
-/* harmony export */   fetchQuestions: () => (/* binding */ fetchQuestions)
+/* harmony export */   fetchQuestions: () => (/* binding */ fetchQuestions),
+/* harmony export */   lastSubmittedAnswer: () => (/* binding */ lastSubmittedAnswer)
 /* harmony export */ });
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var redux_logger__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux-logger */ "./node_modules/redux-logger/dist/redux-logger.js");
@@ -27155,6 +27162,18 @@ const fetchCodingQuestions = () => {
     dispatch({
       type: "SET_CODING_QUESTIONS",
       codingQuestions: response.data
+    });
+  };
+};
+const lastSubmittedAnswer = (curr, submit) => {
+  return async dispatch => {
+    const response = await axios__WEBPACK_IMPORTED_MODULE_2__["default"].put("/api/questions", {
+      curr,
+      submit
+    });
+    dispatch({
+      type: "SET_QUESTIONS",
+      questions: response.data
     });
   };
 };
@@ -29390,10 +29409,10 @@ module.exports.DIFF_EQUAL = DIFF_EQUAL;
 
 /***/ }),
 
-/***/ "./src/images/download.png":
-/*!*********************************!*\
-  !*** ./src/images/download.png ***!
-  \*********************************/
+/***/ "./src/images/logorectangle.png":
+/*!**************************************!*\
+  !*** ./src/images/logorectangle.png ***!
+  \**************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -29401,7 +29420,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + "images/download.png");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + "images/logorectangle.png");
 
 /***/ }),
 

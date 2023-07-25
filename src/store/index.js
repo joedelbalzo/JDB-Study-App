@@ -34,6 +34,13 @@ export const fetchCodingQuestions = () => {
   };
 };
 
+export const lastSubmittedAnswer = (curr, submit) => {
+  return async (dispatch) => {
+    const response = await axios.put("/api/questions", { curr, submit });
+    dispatch({ type: "SET_QUESTIONS", questions: response.data });
+  };
+};
+
 const store = createStore(reducer, applyMiddleware(thunk, logger));
 
 export default store;
