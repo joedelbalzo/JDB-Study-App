@@ -2,6 +2,7 @@ html {
   background-color: #242424;
   margin: 0px;
   padding: 0px;
+  height: 100%;
   overflow-y: auto;
 }
 
@@ -11,6 +12,8 @@ body {
   font-family: Helvetica, Geneca, sans-serif;
   color: #e4e6eb;
   text-align: center;
+  height: 100%;
+
   font-size: calc(12px + 1.5vw);
 }
 
@@ -104,11 +107,22 @@ pre {
   border-radius: 5px;
   cursor: pointer;
 }
+.disabled-run-button {
+  margin-bottom: 20px;
+  background-color: #1e1e1e;
+  outline: 1px solid #007acc;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 10px auto;
+  border-radius: 5px;
+  cursor: pointer;
+}
 
 .run-button:hover {
   background-color: #1e1e1e;
   outline: 1px solid #007acc;
-  color: #d4d4d4;
+  /* color: #d4d4d4; */
 }
 
 .clear-stats-button,
@@ -151,17 +165,17 @@ pre {
 .correct-stats-button:hover {
   background-color: #1e1e1e;
   outline: 1px solid green;
-  color: #d4d4d4;
+  /* color: #d4d4d4; */
 }
 .incorrect-stats-button:hover {
   background-color: #1e1e1e;
   outline: 1px solid red;
-  color: #d4d4d4;
+  /* color: #d4d4d4; */
 }
 .clear-stats-button:hover {
   background-color: #1e1e1e;
   outline: 1px solid #007acc;
-  color: #d4d4d4;
+  /* color: #d4d4d4; */
 }
 
 .mcq-stats {
@@ -201,4 +215,13 @@ pre {
 }
 .js-or-python:hover {
   cursor: pointer;
+}
+
+.wrong-answer-explanation {
+  width: 60vw;
+  font-style: italic;
+  font-size: calc(8px + 1vw);
+  font-weight: 300;
+  color: darkred;
+  margin: auto;
 }

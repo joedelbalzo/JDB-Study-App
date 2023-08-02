@@ -226,6 +226,7 @@ const codingQuestionData = [
       "  // Write your code here\n" +
       "}\n" +
       "\n" +
+      'console.log(JSON.stringify(wordCount("Hello World! Hello Everyone!"))) //{"Hello":2,"World!":1,"Everyone!":1};\n' +
       'console.log(wordCount("Hello World! Hello Everyone!")) //{"Hello":2,"World!":1,"Everyone!":1};\n' +
       'console.log(wordCount("Hash maps are useful!")) //{"Hash":1,"maps":1,"are":1,"useful!":1}; \n' +
       'console.log(wordCount("The Capitals won the Stanley Cup in the year 2018!")) //{"the":3,"capitals":1,"won":1,"stanley":1 ,"cup":1, ,"in":1 ,"year":1,"2018":1};',

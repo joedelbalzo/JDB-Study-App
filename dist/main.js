@@ -26548,11 +26548,10 @@ const CodeRunner = ({
   question,
   onCorrectChange
 }) => {
-  // console.log(question);
   const iframeRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   const [code, setCode] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(question.code);
   const [output, setOutput] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
-  const [codeIsCorrect, setCodeIsCorrect] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(Boolean);
+  const [codeIsCorrect, setCodeIsCorrect] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [codingState, setCodingState] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("javascript");
   const [isIframeLoaded, setIsIframeLoaded] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [pythonOutput, setPythonOutput] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("");
@@ -26573,10 +26572,19 @@ const CodeRunner = ({
       results.push(`Error: ${error} at line ${lineNumber}`);
     }
     let isCorrect = results[0] === question.answer[0].toString() && results[1] === question.answer[1].toString() && results[2] === question.answer[2].toString();
-    console.log(results, isCorrect);
-    await setCodeIsCorrect(isCorrect);
-    await onCorrectChange(isCorrect);
-    setOutput(results);
+    try {
+      await setCodeIsCorrect(isCorrect);
+      setOutput(results);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    setCodeIsCorrect(false);
+    setCode(question.code);
+  }, [question]);
+  const submitCode = async () => {
+    await onCorrectChange(true);
   };
   const onChange = newValue => {
     setCode(newValue);
@@ -26593,17 +26601,13 @@ const CodeRunner = ({
     };
   }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    console.log("Python output:", pythonOutput);
     const answers = `${question.answer[0]}\n${question.answer[1]}\n${question.answer[2]}`;
     console.log(answers);
-    if (pythonOutput == answers) {
-      console.log("YOU'RE RIGHT");
-    }
+    if (pythonOutput == answers) {}
   }, [pythonOutput]);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     if (codingState === "python" && iframeRef.current.contentWindow) {
       const code = question.codePython;
-      console.log(code);
       iframeRef.current.contentWindow.postMessage({
         eventType: "populateCode",
         language: "python",
@@ -26621,7 +26625,7 @@ const CodeRunner = ({
   };
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "code-runner"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, question.question), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, question.question), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "js-or-python"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
     onClick: () => {
@@ -26664,10 +26668,27 @@ const CodeRunner = ({
   }), codingState === "python" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     className: "run-button",
     onClick: ev => triggerRun(ev)
-  }, "Run Code") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+  }, "Run Code") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     className: "run-button",
-    onClick: runCode
-  }, "Run Code"), codingState === "javascript" && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", {
+    onClick: runCode,
+    style: {
+      marginRight: "2px"
+    }
+  }, "Run Code"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    disabled: codeIsCorrect === false,
+    className: codeIsCorrect === false ? "disabled-run-button" : "run-button",
+    style: {
+      marginLeft: "2px"
+    },
+    onClick: submitCode
+  }, "Submit Code"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    disabled: codeIsCorrect === false,
+    className: codeIsCorrect === false ? "disabled-run-button" : "run-button",
+    style: {
+      marginLeft: "2px"
+    },
+    onClick: submitCode
+  }, "Clear Code")), codingState === "javascript" && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", {
     style: {
       margin: 0
     }
@@ -26723,11 +26744,9 @@ const CodingQuestions = ({
     }
   };
   if (!codingQuestions) {
-    console.log("no questions!");
     return null;
   }
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    console.log("...fetching");
     dispatch((0,_store__WEBPACK_IMPORTED_MODULE_1__.fetchCodingQuestions)());
   }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
@@ -26758,9 +26777,7 @@ const CodingQuestions = ({
     return random[Math.floor(Math.random() * random.length)];
   };
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    console.log("in the useEffect");
     if (correctState === true) {
-      console.log("YOU GOT IT!");
       updateCorrectState(prevState => prevState + 1);
       currentQuestion.timesCorrect++;
     }
@@ -26863,7 +26880,17 @@ const Home = () => {
     localStorage.removeItem("numberIncorrect");
     localStorage.removeItem("questionsCorrect");
   };
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Nav__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Routes, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    style: {
+      display: "flex",
+      flexDirection: "column",
+      minHeight: "100vh"
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Nav__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    style: {
+      flexGrow: "100%"
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Routes, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
     path: "/",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_MCQ__WEBPACK_IMPORTED_MODULE_4__["default"], {
       updateCorrectState: setCorrectState,
@@ -26876,7 +26903,13 @@ const Home = () => {
       updateIncorrectState: setIncorrectState,
       prop: 123
     })
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    style: {
+      display: "flex",
+      marginBottom: "1rem",
+      marginTop: "auto"
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "mcq-stats"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     className: correctClass === "correct" ? "correct-answer" : "correct-stats-button",
@@ -26894,7 +26927,7 @@ const Home = () => {
       flex: 1
     },
     onClick: clearStats
-  }, "Clear Stats"), " "));
+  }, "Clear Stats"), " "))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Home);
 
@@ -26933,6 +26966,7 @@ const MCQ = ({
   const [fourIsChecked, setFourIsChecked] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [fiveIsChecked, setFiveIsChecked] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [recentlyCorrect, setRecentlyCorrect] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
+  const [explanation, setExplanation] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("");
   const dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useDispatch)();
   if (!questions) {
     console.log("no questions!");
@@ -26962,40 +26996,47 @@ const MCQ = ({
       return question;
     }
     let notRecentlyCorrect = questions.filter(q => !recentlyCorrect.includes(q));
-    console.log("not recently correct", notRecentlyCorrect);
-    let mostlyCorrect = notRecentlyCorrect.filter(q => q.timesIncorrect + 5 < q.timesCorrect);
-    console.log("mostly correct", mostlyCorrect);
-    let mostlyIncorrect = notRecentlyCorrect.filter(q => q.timesIncorrect + 5 >= q.timesCorrect);
+    // console.log("not recently correct", notRecentlyCorrect);
+    let mostlyCorrect = notRecentlyCorrect.filter(q => q.timesIncorrect + 3 < q.timesCorrect);
+    // console.log("mostly correct", mostlyCorrect);
+    let mostlyIncorrect = notRecentlyCorrect.filter(q => q.timesIncorrect + 3 >= q.timesCorrect);
     console.log("mostly incorrect", mostlyIncorrect);
     let random = [...mostlyIncorrect, ...mostlyIncorrect, ...mostlyCorrect];
     return random[Math.floor(Math.random() * random.length)];
   };
   const handleAnswerSubmit = async (ev, curr) => {
     ev.preventDefault();
+    const mcqAnswerArray = [];
     const correctAnswer = [];
     if (curr.answerOne[0] === "C") {
-      correctAnswer.push(true);
-    } else correctAnswer.push(false);
+      mcqAnswerArray.push(true);
+      correctAnswer.push(curr.answerOne.slice(1));
+    } else mcqAnswerArray.push(false);
     if (curr.answerTwo[0] === "C") {
-      correctAnswer.push(true);
-    } else correctAnswer.push(false);
+      mcqAnswerArray.push(true);
+      correctAnswer.push(curr.answerTwo.slice(1));
+    } else mcqAnswerArray.push(false);
     if (curr.answerThree && curr.answerThree[0] === "C") {
-      correctAnswer.push(true);
-    } else correctAnswer.push(false);
+      mcqAnswerArray.push(true);
+      correctAnswer.push(curr.answerThree.slice(1));
+    } else mcqAnswerArray.push(false);
     if (curr.answerFour && curr.answerFour[0] === "C") {
-      correctAnswer.push(true);
-    } else correctAnswer.push(false);
+      mcqAnswerArray.push(true);
+      correctAnswer.push(curr.answerFour.slice(1));
+    } else mcqAnswerArray.push(false);
     if (curr.answerFive && curr.answerFive[0] === "C") {
-      correctAnswer.push(true);
-    } else correctAnswer.push(false);
+      mcqAnswerArray.push(true);
+      correctAnswer.push(curr.answerFive.slice(1));
+    } else mcqAnswerArray.push(false);
     const checked = [oneIsChecked, twoIsChecked, threeIsChecked, fourIsChecked, fiveIsChecked];
     let correct = true;
-    for (let i = 0; i < correctAnswer.length; i++) {
-      if (correctAnswer[i] === checked[i]) {
+    for (let i = 0; i < mcqAnswerArray.length; i++) {
+      if (mcqAnswerArray[i] === checked[i]) {
         correct = true;
-      } else if (correctAnswer[i] !== checked[i]) {
+      } else if (mcqAnswerArray[i] !== checked[i]) {
         updateIncorrectState(prevState => prevState + 1);
         dispatch((0,_store__WEBPACK_IMPORTED_MODULE_1__.lastSubmittedAnswer)(curr, "incorrect"));
+        setExplanation(`The answer for "${curr.question.toLowerCase()}" was "${correctAnswer.join(" ").toLowerCase()}".`);
         correct = false;
         break;
       }
@@ -27005,6 +27046,7 @@ const MCQ = ({
       curr.timesCorrect++;
       correctlyAnsweredRecently(curr);
       dispatch((0,_store__WEBPACK_IMPORTED_MODULE_1__.lastSubmittedAnswer)(curr, "correct"));
+      setExplanation("");
     }
     await setCurrentQuestion(questionRandomizer());
     setOneIsChecked(false);
@@ -27049,7 +27091,9 @@ const MCQ = ({
   }), currentQuestion.answerFive.slice(1)) : "", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     type: "submit",
     className: "run-button"
-  }, "Submit Answer")))));
+  }, "Submit Answer"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, explanation ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "wrong-answer-explanation"
+  }, explanation) : "")));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MCQ);
 

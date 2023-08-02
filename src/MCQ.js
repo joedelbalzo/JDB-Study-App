@@ -12,6 +12,7 @@ const MCQ = ({ updateCorrectState, updateIncorrectState }) => {
   const [fourIsChecked, setFourIsChecked] = useState(false);
   const [fiveIsChecked, setFiveIsChecked] = useState(false);
   const [recentlyCorrect, setRecentlyCorrect] = useState([]);
+  const [explanation, setExplanation] = useState("");
   const dispatch = useDispatch();
 
   if (!questions) {
@@ -44,10 +45,10 @@ const MCQ = ({ updateCorrectState, updateIncorrectState }) => {
       return question;
     }
     let notRecentlyCorrect = questions.filter((q) => !recentlyCorrect.includes(q));
-    console.log("not recently correct", notRecentlyCorrect);
-    let mostlyCorrect = notRecentlyCorrect.filter((q) => q.timesIncorrect + 5 < q.timesCorrect);
-    console.log("mostly correct", mostlyCorrect);
-    let mostlyIncorrect = notRecentlyCorrect.filter((q) => q.timesIncorrect + 5 >= q.timesCorrect);
+    // console.log("not recently correct", notRecentlyCorrect);
+    let mostlyCorrect = notRecentlyCorrect.filter((q) => q.timesIncorrect + 3 < q.timesCorrect);
+    // console.log("mostly correct", mostlyCorrect);
+    let mostlyIncorrect = notRecentlyCorrect.filter((q) => q.timesIncorrect + 3 >= q.timesCorrect);
     console.log("mostly incorrect", mostlyIncorrect);
 
     let random = [...mostlyIncorrect, ...mostlyIncorrect, ...mostlyCorrect];
@@ -56,31 +57,42 @@ const MCQ = ({ updateCorrectState, updateIncorrectState }) => {
 
   const handleAnswerSubmit = async (ev, curr) => {
     ev.preventDefault();
+    const mcqAnswerArray = [];
     const correctAnswer = [];
     if (curr.answerOne[0] === "C") {
-      correctAnswer.push(true);
-    } else correctAnswer.push(false);
+      mcqAnswerArray.push(true);
+      correctAnswer.push(curr.answerOne.slice(1));
+    } else mcqAnswerArray.push(false);
     if (curr.answerTwo[0] === "C") {
-      correctAnswer.push(true);
-    } else correctAnswer.push(false);
+      mcqAnswerArray.push(true);
+      correctAnswer.push(curr.answerTwo.slice(1));
+    } else mcqAnswerArray.push(false);
     if (curr.answerThree && curr.answerThree[0] === "C") {
-      correctAnswer.push(true);
-    } else correctAnswer.push(false);
+      mcqAnswerArray.push(true);
+      correctAnswer.push(curr.answerThree.slice(1));
+    } else mcqAnswerArray.push(false);
     if (curr.answerFour && curr.answerFour[0] === "C") {
-      correctAnswer.push(true);
-    } else correctAnswer.push(false);
+      mcqAnswerArray.push(true);
+      correctAnswer.push(curr.answerFour.slice(1));
+    } else mcqAnswerArray.push(false);
     if (curr.answerFive && curr.answerFive[0] === "C") {
-      correctAnswer.push(true);
-    } else correctAnswer.push(false);
+      mcqAnswerArray.push(true);
+      correctAnswer.push(curr.answerFive.slice(1));
+    } else mcqAnswerArray.push(false);
     const checked = [oneIsChecked, twoIsChecked, threeIsChecked, fourIsChecked, fiveIsChecked];
 
     let correct = true;
-    for (let i = 0; i < correctAnswer.length; i++) {
-      if (correctAnswer[i] === checked[i]) {
+    for (let i = 0; i < mcqAnswerArray.length; i++) {
+      if (mcqAnswerArray[i] === checked[i]) {
         correct = true;
-      } else if (correctAnswer[i] !== checked[i]) {
+      } else if (mcqAnswerArray[i] !== checked[i]) {
         updateIncorrectState((prevState) => prevState + 1);
         dispatch(lastSubmittedAnswer(curr, "incorrect"));
+        setExplanation(
+          `The answer for "${curr.question.toLowerCase()}" was "${correctAnswer
+            .join(" ")
+            .toLowerCase()}".`
+        );
         correct = false;
         break;
       }
@@ -90,6 +102,7 @@ const MCQ = ({ updateCorrectState, updateIncorrectState }) => {
       curr.timesCorrect++;
       correctlyAnsweredRecently(curr);
       dispatch(lastSubmittedAnswer(curr, "correct"));
+      setExplanation("");
     }
     await setCurrentQuestion(questionRandomizer());
     setOneIsChecked(false);
@@ -168,6 +181,7 @@ const MCQ = ({ updateCorrectState, updateIncorrectState }) => {
             </form>
           </>
         )}
+        <>{explanation ? <div className="wrong-answer-explanation">{explanation}</div> : ""}</>
       </div>
     </>
   );

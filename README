@@ -9,3 +9,37 @@ Looking down the pipeline:
 -Oauth with Google and Github so you can log in and save your recently correct and your stats
 -Build my own python compiler
 -More fill in the blank questions
+
+Basic wireframe:
+
+Home page:
+nav:
+image
+quiz questions
+coding questions
+take a test:
+-- two random harder questions, a few quiz questions, maybe a progress bar or a timer?
+
+main page:
+main components
+quiz questions:
+questions
+available answers
+notes:
+recently correct questions should filter out and not be repeated _by time_
+add many more questions, including fill-in-the-blanks
+
+      coding questions:
+        question
+        coding block
+        console output
+      statistics component:
+        correct, incorrect, clear stats buttons
+
+
+       future test page
+          test:
+            random collection of harder questions
+            timer
+            progress bar
+            forward and back buttons?

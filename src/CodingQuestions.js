@@ -20,11 +20,9 @@ const CodingQuestions = ({ updateCorrectState, updateIncorrectState, prop }) => 
   };
 
   if (!codingQuestions) {
-    console.log("no questions!");
     return null;
   }
   useEffect(() => {
-    console.log("...fetching");
     dispatch(fetchCodingQuestions());
   }, []);
 
@@ -57,9 +55,7 @@ const CodingQuestions = ({ updateCorrectState, updateIncorrectState, prop }) => 
   };
 
   useEffect(() => {
-    console.log("in the useEffect");
     if (correctState === true) {
-      console.log("YOU GOT IT!");
       updateCorrectState((prevState) => prevState + 1);
       currentQuestion.timesCorrect++;
     }

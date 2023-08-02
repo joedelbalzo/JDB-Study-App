@@ -1,5 +1,6 @@
 const questionData = [
   {
+    questionNumber: 1,
     category: "test",
     question: "What's the worst part about coding interviews?",
     answerOne: "XAlgos",
@@ -11,6 +12,7 @@ const questionData = [
     timesIncorrect: 2,
   },
   {
+    questionNumber: 2,
     category: "JavaScript Basics",
     question: "What is JavaScript?",
     answerOne: "CA scripting language used to make the website interactive",
@@ -21,6 +23,7 @@ const questionData = [
     timesIncorrect: 2,
   },
   {
+    questionNumber: 3,
     category: "JavaScript Basics",
     question: "Which of the following is correct about JavaScript?",
     answerOne: "CIt's an object-based language",
@@ -32,6 +35,7 @@ const questionData = [
     timesIncorrect: 2,
   },
   {
+    questionNumber: 4,
     category: "JavaScript Basics",
     question: "Among the given statements, which statement defines closures in JavaScript?",
     answerOne:
@@ -45,6 +49,7 @@ const questionData = [
     timesIncorrect: 2,
   },
   {
+    questionNumber: 5,
     category: "JavaScript Basics",
     question: "Arrays in JavaScript are defined by which of the following statements?",
     answerOne: "CIt is an ordered list of values",
@@ -56,6 +61,7 @@ const questionData = [
     timesIncorrect: 2,
   },
   {
+    questionNumber: 6,
     category: "JavaScript Basics",
     question:
       "Which of the following object is the main entry point to all client-side JavaScript features and APIs?",
@@ -68,6 +74,7 @@ const questionData = [
     timesIncorrect: 2,
   },
   {
+    questionNumber: 7,
     category: "JavaScript Basics",
     question: "Which of the following scoping type does JavaScript use?",
     answerOne: "XSequential",
@@ -79,6 +86,7 @@ const questionData = [
     timesIncorrect: 2,
   },
   {
+    questionNumber: 8,
     category: "JavaScript Basics",
     question: "What is the basic difference between JavaScript and Java?",
     answerOne: "XFunctions are considered fields",
@@ -89,6 +97,7 @@ const questionData = [
     timesIncorrect: 2,
   },
   {
+    questionNumber: 9,
     category: "JavaScript Basics",
     question: "What is the basic difference between JavaScript and Java?",
     answerOne: "XFunctions are considered fields",
@@ -102,6 +111,7 @@ const questionData = [
 
   //big o
   {
+    questionNumber: 10,
     category: "Time and Space Complexity",
     question: "What is the time complexity of the 'splice' method in JavaScript?",
     answerOne: "XConstant (O(1))",
@@ -113,6 +123,7 @@ const questionData = [
     timesIncorrect: 6,
   },
   {
+    questionNumber: 11,
     category: "Time and Space Complexity",
     question: "What is the space complexity of a recursive function?",
     answerOne: "XConstant (O(1))",
@@ -123,6 +134,7 @@ const questionData = [
   },
 
   {
+    questionNumber: 12,
     category: "Time and Space Complexity",
     question: "Which sorting algorithm has the best average-case time complexity?",
     answerOne: "XBubble Sort",
@@ -134,6 +146,7 @@ const questionData = [
     timesIncorrect: 4,
   },
   {
+    questionNumber: 13,
     category: "Time and Space Complexity",
     question: "Data Structure Ops: Array (unsorted) -- Deletion",
     answerOne: "XO(1)",
@@ -145,6 +158,7 @@ const questionData = [
     timesIncorrect: 4,
   },
   {
+    questionNumber: 14,
     category: "Time and Space Complexity",
     question: "Data Structure Ops: Splay Tree (unsorted) -- Search(Average)",
     answerOne: "XO(1)",
@@ -156,6 +170,7 @@ const questionData = [
     timesIncorrect: 4,
   },
   {
+    questionNumber: 15,
     category: "Time and Space Complexity",
     question: "Data Structure Ops: AVL Tree (unsorted) -- Insertion(worst)",
     answerOne: "XO(1)",
@@ -171,6 +186,7 @@ const questionData = [
   //// source https://www.interviewbit.com/linked-list-mcq/ ////
 
   {
+    questionNumber: 16,
     category: "Linked Lists",
     question: "What information is stored in a doubly-linked list's nodes?",
     answerOne: "XValue of node",
@@ -182,6 +198,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 17,
     category: "Linked Lists",
     question: "What is the optimal time complexity to count the number of nodes in a linked list?",
     answerOne: "CO(n)",
@@ -193,6 +210,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 18,
     category: "Linked Lists",
     question: "Which of the following are applications of linked lists?",
     answerOne: "XImplementing file systems",
@@ -204,6 +222,7 @@ const questionData = [
     timesIncorrect: 1,
   },
   {
+    questionNumber: 19,
     category: "Linked Lists",
     question:
       "Insertion of an element at the middle of a linked list requires the modification of how many pointers?",
@@ -216,6 +235,7 @@ const questionData = [
     timesIncorrect: 1,
   },
   {
+    questionNumber: 20,
     category: "Linked Lists",
     question:
       "Insertion of an element at the end of a linked list requires the modification of how many pointers?",
@@ -228,6 +248,7 @@ const questionData = [
     timesIncorrect: 1,
   },
   {
+    questionNumber: 21,
     category: "Linked Lists",
     question:
       "In the worst case, the number of comparisons needed to search a singly linked list of length n for a given element will be?",
@@ -240,6 +261,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 22,
     category: "Linked Lists",
     question: "Which of the following algos is not feasible to implement in a linked list??",
     answerOne: "XLinear Search",
@@ -251,6 +273,7 @@ const questionData = [
     timesIncorrect: 1,
   },
   {
+    questionNumber: 23,
     category: "Linked Lists",
     question: "Which of the following algos is not feasible to implement in a linked list?",
     answerOne: "XLinear Search",
@@ -262,6 +285,7 @@ const questionData = [
     timesIncorrect: 1,
   },
   {
+    questionNumber: 24,
     category: "Linked Lists",
     question: "Which of the following can be done with linked lists?",
     answerOne: "XImplementation of Stacks and Queues",
@@ -273,6 +297,7 @@ const questionData = [
     timesIncorrect: 1,
   },
   {
+    questionNumber: 25,
     category: "Linked Lists",
     question: "What is the time complexity to insert an element to the front of a linked list?",
     answerOne: "XO(log n)",
@@ -284,6 +309,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 26,
     category: "Linked Lists",
     question: "What is the time complexity to insert an element to the rear of a linked list?",
     answerOne: "XO(log n)",
@@ -295,6 +321,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 27,
     category: "Linked Lists",
     question: "Linked lists nodes can be implemented using what?",
     answerOne: "XStructs",
@@ -306,6 +333,7 @@ const questionData = [
     timesIncorrect: 1,
   },
   {
+    questionNumber: 28,
     category: "Linked Lists",
     question:
       "Which type of linked list stores the address of the head node in the next pointer of the last node?",
@@ -318,6 +346,7 @@ const questionData = [
     timesIncorrect: 1,
   },
   {
+    questionNumber: 29,
     category: "Linked Lists",
     question: "What does the following code snippet do?",
     codeSnippet: `
@@ -350,6 +379,7 @@ const questionData = [
     timesIncorrect: 1,
   },
   {
+    questionNumber: 30,
     category: "Linked Lists",
     question: "What is the time complexity to reverse a linked list?",
     answerOne: "XO(log n)",
@@ -361,6 +391,7 @@ const questionData = [
     timesIncorrect: 1,
   },
   {
+    questionNumber: 31,
     category: "Linked Lists",
     question: "What is the time complexity to concatenate two linked lists?",
     answerOne: "XO(log n)",
@@ -372,6 +403,7 @@ const questionData = [
     timesIncorrect: 1,
   },
   {
+    questionNumber: 32,
     category: "Linked Lists",
     question: "Which type of linked list traversals can be performed in both directions?",
     answerOne: "XSingly",
@@ -383,6 +415,7 @@ const questionData = [
     timesIncorrect: 1,
   },
   {
+    questionNumber: 33,
     category: "Linked Lists",
     question:
       "Which of the following algorithm is the optimal way to find the middle element of a linked list?",
@@ -395,6 +428,7 @@ const questionData = [
     timesIncorrect: 1,
   },
   {
+    questionNumber: 34,
     category: "Linked Lists",
     question: "A linked list where none of the nodes contain a NULL pointer is?",
     answerOne: "XSingly",
@@ -406,6 +440,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 35,
     category: "Linked Lists",
     question: "Which of the following statements are true?",
     answerOne: "XRandom access of elements in a linked list is not possible",
@@ -417,6 +452,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 36,
     category: "Linked Lists",
     question:
       "What is the optimal complexity we can achieve when removing duplicates from an unsorted linked list?",
@@ -429,6 +465,7 @@ const questionData = [
     timesIncorrect: 1,
   },
   {
+    questionNumber: 37,
     category: "Linked Lists",
     question:
       "What is the optimal complexity we can achieve when removing duplicates from a sorted linked list?",
@@ -441,6 +478,7 @@ const questionData = [
     timesIncorrect: 1,
   },
   {
+    questionNumber: 38,
     category: "Linked Lists",
     question: "Which of the following sorting algorithms can be applied to linked lists?",
     answerOne: "XMerge Sort",
@@ -452,6 +490,7 @@ const questionData = [
     timesIncorrect: 1,
   },
   {
+    questionNumber: 39,
     category: "Linked Lists",
     question: "What does the following code snippet do?",
     codeSnippet: `
@@ -481,6 +520,7 @@ const questionData = [
     timesIncorrect: 1,
   },
   {
+    questionNumber: 40,
     category: "Linked Lists",
     question: "What will be the output of the following code snippet for 1->2->3->4->5?",
     codeSnippet: `
@@ -501,6 +541,7 @@ const questionData = [
     timesIncorrect: 1,
   },
   {
+    questionNumber: 41,
     category: "Linked Lists",
     question: "What does the following code snippet do?",
     codeSnippet: `
@@ -524,6 +565,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 42,
     category: "Linked Lists",
     question: "What does the following code snippet do?",
     codeSnippet: `
@@ -540,6 +582,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 43,
     category: "Linked Lists",
     question:
       "The type of pointer used to point to the address of the next element in a linked list",
@@ -552,6 +595,7 @@ const questionData = [
     timesIncorrect: 1,
   },
   {
+    questionNumber: 44,
     category: "Linked Lists",
     question: "Which is the most optimal to find an element at the kth position in a linked list?",
     answerOne: "XSingly Linked List",
@@ -563,6 +607,7 @@ const questionData = [
     timesIncorrect: 1,
   },
   {
+    questionNumber: 45,
     category: "Linked Lists",
     question: "What is the time complexity of adding 2 numbers as a linked list?",
     answerOne: "CO(max(n,m)) where n and m are sizes of the list",
@@ -574,6 +619,7 @@ const questionData = [
     timesIncorrect: 1,
   },
   {
+    questionNumber: 46,
     category: "Linked Lists",
     question: "Which of the following problems can be solved using two tortoise and hare pointers?",
     answerOne: "XDetecting cycle in a linked list",
@@ -585,6 +631,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 47,
     category: "Linked Lists",
     question: "Which of the following is similar about singly and doubly linked lists?",
     answerOne:
@@ -598,6 +645,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 48,
     category: "Linked Lists",
     question: "Rotating a linked list by some places clockwise will take a TIME complexity of?",
     answerOne: "XO(log n)",
@@ -609,6 +657,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 49,
     category: "Linked Lists",
     question: "Rotating a linked list by some places clockwise will take a SPACE complexity of?",
     answerOne: "XO(log n)",
@@ -620,6 +669,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 50,
     category: "Linked Lists",
     question: "What is the space complexity for deleting a linked list?",
     answerOne: "XO(log n)",
@@ -631,6 +681,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 51,
     category: "Linked Lists",
     question: "What is the space complexity for storing a linked list?",
     answerOne: "XO(log n)",
@@ -642,6 +693,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 52,
     category: "Linked Lists",
     question: "Which of the following operations takes O(1) time?",
     answerOne: "CInsert element at the start of linked list",
@@ -653,6 +705,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 53,
     category: "Linked Lists",
     question: "What information stored by linked lists is used to implement binary trees?",
     answerOne: "XValue of current node",
@@ -664,6 +717,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 54,
     category: "Linked Lists",
     question: "Which of the following sorting algorithms is preferred to sort a linked list?",
     answerOne: "CMerge Sort",
@@ -675,6 +729,7 @@ const questionData = [
     timesIncorrect: 2,
   },
   {
+    questionNumber: 55,
     category: "JavaScript",
     question: "What is the use of 'this' keyword in JavaScript?",
     answerOne: "CIt refers to the current instance of the object",
@@ -686,6 +741,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 56,
     category: "JavaScript",
     question:
       "Which method in an Array object is used to add and/or remove elements from an array?",
@@ -698,6 +754,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 57,
     category: "Data Structures",
     question: "What data structure uses a Last In First Out (LIFO) method?",
     answerOne: "XQueue",
@@ -709,6 +766,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 58,
     category: "Data Structures",
     question:
       "In binary search trees, where does a node with a value less than the parent node go?",
@@ -721,18 +779,20 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 59,
     category: "Algorithms",
     question:
       "What is the time complexity of the quicksort algorithm in the average case scenario?",
     answerOne: "XO(n)",
-    answerTwo: "XO(nlogn)",
+    answerTwo: "XO(1)",
     answerThree: "CO(nlogn)",
     answerFour: "XO(n^2)",
-    answerFive: "XO(1)",
+    answerFive: "XNone of the above",
     timesCorrect: 0,
     timesIncorrect: 0,
   },
   {
+    questionNumber: 60,
     category: "Algorithms",
     question:
       "In the Dijkstra's algorithm, which data structure is typically used to store the vertices?",
@@ -745,6 +805,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 61,
     category: "JavaScript",
     question:
       "What type of JavaScript variable is mutable and allows properties to be added and removed?",
@@ -757,6 +818,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 62,
     category: "JavaScript",
     question: "Which method is used to remove the last element from a JavaScript array?",
     answerOne: "Xshift()",
@@ -768,6 +830,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 63,
     category: "Data Structures",
     question: "In hash tables, what technique helps handle collisions?",
     answerOne: "XBinary Search",
@@ -779,6 +842,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 64,
     category: "Algorithms",
     question: "Which of the following is not a type of sorting algorithm?",
     answerOne: "XBubble Sort",
@@ -790,6 +854,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 65,
     category: "Binary Search Trees",
     question: "What is the time complexity of searching for an element in a binary search tree?",
     answerOne: "XO(n^2)",
@@ -801,6 +866,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 66,
     category: "Binary Search Trees",
     question: "What does the following JavaScript code do?",
     codeSnippet: `
@@ -823,6 +889,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 67,
     category: "Binary Search Trees",
     question: "In a binary search tree, which traversal method results in a sorted order of nodes?",
     answerOne: "XPreorder traversal",
@@ -834,6 +901,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 68,
     category: "Binary Search Trees",
     question:
       "What operation would give a worst-case time complexity of O(n) in a binary search tree?",
@@ -846,6 +914,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 69,
     category: "Binary Search Trees",
     question: "What does the following JavaScript code do?",
     codeSnippet: `
@@ -866,6 +935,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 70,
     category: "Binary Search Trees",
     question:
       "In a binary search tree, the left child is _______ than the parent, and the right child is _______ than the parent.",
@@ -878,6 +948,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 71,
     category: "Binary Trees",
     question: "What is the maximum number of nodes at level 'l' in a binary tree?",
     answerOne: "Xl",
@@ -889,6 +960,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 72,
     category: "Binary Trees",
     question: "What is the time complexity of in-order tree traversal in a binary tree?",
     answerOne: "XO(logn)",
@@ -900,6 +972,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 73,
     category: "Binary Trees",
     question: "What does the following JavaScript code do?",
     codeSnippet: `
@@ -920,6 +993,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 74,
     category: "Binary Search Trees",
     question:
       "What is the time complexity of the worst case for insert operation in a Binary Search Tree?",
@@ -932,6 +1006,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 75,
     category: "Binary Search Trees",
     question: "What does the following JavaScript code do?",
     codeSnippet: `
@@ -957,6 +1032,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 76,
     category: "Binary Search Trees",
     question: "What does 'balanced' mean in the context of Binary Search Trees?",
     answerOne: "XAll nodes have two children",
@@ -968,6 +1044,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 77,
     category: "Binary Trees",
     question: "What type of binary tree is used for Huffman coding?",
     answerOne: "XBinary Search Tree",
@@ -979,6 +1056,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 78,
     category: "Binary Search Trees",
     question:
       "In the context of Binary Search Trees, what does the term 'in-order predecessor' mean?",
@@ -991,6 +1069,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 79,
     category: "JavaScript Data Structures",
     question: "What will be the output of the following JavaScript code?",
     codeSnippet: `
@@ -1006,6 +1085,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 80,
     category: "JavaScript Data Structures",
     question: "What will be the output of the following JavaScript code?",
     codeSnippet: `
@@ -1024,6 +1104,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 81,
     category: "JavaScript Data Structures",
     question: "What is the time complexity of adding an element to a JavaScript array?",
     answerOne: "CO(1)",
@@ -1035,6 +1116,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 82,
     category: "JavaScript Data Structures",
     question: "What data structure is ideally suited for a first-in-first-out (FIFO) process?",
     answerOne: "XSet",
@@ -1046,6 +1128,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 83,
     category: "JavaScript Data Structures",
     question: "What will be the output of the following JavaScript code?",
     codeSnippet: `
@@ -1062,6 +1145,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 84,
     category: "JavaScript Data Structures",
     question: "Which method removes the last element from an array and returns that element?",
     answerOne: "Xshift()",
@@ -1073,6 +1157,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 85,
     category: "JavaScript Data Structures",
     question: "What will be the output of the following JavaScript code?",
     codeSnippet: `
@@ -1089,6 +1174,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 86,
     category: "JavaScript Data Structures",
     question: "Which of the following is not a built-in JavaScript data structure?",
     answerOne: "XLinked List",
@@ -1100,6 +1186,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 87,
     category: "JavaScript Data Structures",
     question: "What will be the output of the following JavaScript code?",
     codeSnippet: `
@@ -1117,6 +1204,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 88,
     category: "JavaScript Data Structures",
     question: "What is the time complexity to access an element in a JavaScript array by index?",
     answerOne: "XO(n)",
@@ -1128,6 +1216,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 89,
     category: "Python Data Structures",
     question: "What will be the output of the following Python code?",
     codeSnippet: `
@@ -1143,6 +1232,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 90,
     category: "Python Data Structures",
     question: "What will be the output of the following Python code?",
     codeSnippet: `
@@ -1158,6 +1248,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 91,
     category: "Python Data Structures",
     question: "What is the time complexity of appending an element to a Python list?",
     answerOne: "XO(n)",
@@ -1169,6 +1260,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 92,
     category: "Python Data Structures",
     question: "What data structure is ideally suited for a first-in-first-out (FIFO) process?",
     answerOne: "XList",
@@ -1180,6 +1272,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 93,
     category: "Python Data Structures",
     question: "What will be the output of the following Python code?",
     codeSnippet: `
@@ -1197,6 +1290,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 94,
     category: "Python Data Structures",
     question: "Which method removes the last element from a list and returns that element?",
     answerOne: "Xshift()",
@@ -1208,6 +1302,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 95,
     category: "Python Data Structures",
     question: "What will be the output of the following Python code?",
     codeSnippet: `
@@ -1226,6 +1321,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 96,
     category: "Python Data Structures",
     question: "Which of the following is not a built-in Python data structure?",
     answerOne: "XLinked List",
@@ -1237,6 +1333,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 97,
     category: "Python Data Structures",
     question: "What will be the output of the following Python code?",
     codeSnippet: `
@@ -1254,6 +1351,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 98,
     category: "Python Data Structures",
     question: "What is the time complexity to access an element in a Python list by index?",
     answerOne: "XO(n)",
@@ -1265,6 +1363,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 99,
     category: "Python Data Structures",
     question: "How do you define an empty set in Python?",
     answerOne: "Cset()",
@@ -1276,6 +1375,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 100,
     category: "Python Data Structures",
     question: "What will be the output of the following Python code?",
     codeSnippet: `
@@ -1291,6 +1391,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 101,
     category: "Python Data Structures",
     question:
       "What is the time complexity of checking whether an element is present in a Python set?",
@@ -1303,6 +1404,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 102,
     category: "Python Data Structures",
     question: "What will be the output of the following Python code?",
     codeSnippet: `
@@ -1318,6 +1420,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 103,
     category: "Python Data Structures",
     question: "Which of the following Python data structures is ordered?",
     answerOne: "XSet",
@@ -1329,6 +1432,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 104,
     category: "Python Data Structures",
     question: "What will be the output of the following Python code?",
     codeSnippet: `
@@ -1344,6 +1448,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 105,
     category: "Python Data Structures",
     question: "What will be the output of the following Python code?",
     codeSnippet: `
@@ -1359,6 +1464,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 106,
     category: "Python Data Structures",
     question: "What will be the output of the following Python code?",
     codeSnippet: `
@@ -1374,6 +1480,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 107,
     category: "Python Data Structures",
     question: "What will be the output of the following Python code?",
     codeSnippet: `
@@ -1390,6 +1497,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 108,
     category: "Python Data Structures",
     question: "What is the time complexity to access an element in a Python tuple by index?",
     answerOne: "XO(n)",
@@ -1401,6 +1509,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 109,
     category: "Linked Lists",
     question: "What does this code snippet accomplish?",
     codeSnippet: `
@@ -1427,6 +1536,7 @@ const questionData = [
     timesIncorrect: 0,
   },
   {
+    questionNumber: 110,
     category: "Linked Lists",
     question: "What does this code snippet accomplish?",
     codeSnippet: `
@@ -1448,6 +1558,1262 @@ const questionData = [
     answerThree: "CReverses Linked List",
     answerFour: "XAdds new nodes",
     answerFive: "XNone of the above",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 111,
+    category: "JavaScript Algorithms",
+    question: "_______ is a JavaScript method used to combine two or more arrays.",
+    answerOne: "XArray.join()",
+    answerTwo: "XArray.splice()",
+    answerThree: "CArray.concat()",
+    answerFour: "XArray.merge()",
+    answerFive: "XArray.combine()",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 112,
+    category: "JavaScript Linked Lists",
+    question:
+      "In JavaScript, _______ is not a built-in data structure, but can be implemented using objects and pointers.",
+    answerOne: "XArray",
+    answerTwo: "XStack",
+    answerThree: "XQueue",
+    answerFour: "CLinked List",
+    answerFive: "XSet",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 113,
+    category: "JavaScript Algorithms",
+    question:
+      "The _______ method is used to find the index of the first occurrence of a specified element in an array.",
+    answerOne: "CArray.indexOf()",
+    answerTwo: "XArray.search()",
+    answerThree: "XArray.find()",
+    answerFour: "XArray.positionOf()",
+    answerFive: "XArray.locate()",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 114,
+    category: "JavaScript Binary Trees",
+    question: "In a binary search tree (BST), all nodes to the left of a node have values _______.",
+    answerOne: "Xgreater than the node's value",
+    answerTwo: "Xequal to the node's value",
+    answerThree: "Xnot related to the node's value",
+    answerFour: "Cless than the node's value",
+    answerFive: "Xgreater than or equal to the node's value",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 115,
+    category: "JavaScript Graphs",
+    question: "_______ is a path finding algorithm that uses a heuristic to guide its search.",
+    answerOne: "XA*",
+    answerTwo: "XBreadth-First Search",
+    answerThree: "XDepth-First Search",
+    answerFour: "CDijkstra's Algorithm",
+    answerFive: "XBinary Search",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 116,
+    category: "JavaScript Algorithms",
+    question:
+      "The JavaScript _______ method is used to test whether at least one element in the array passes the test implemented by the provided function.",
+    answerOne: "Xevery()",
+    answerTwo: "Xfilter()",
+    answerThree: "Csome()",
+    answerFour: "Xall()",
+    answerFive: "Xfind()",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 117,
+    category: "JavaScript Binary Trees",
+    question:
+      "In a complete binary tree, every level, except possibly the last, is completely filled, and all nodes in the last level are as far _______ as possible.",
+    answerOne: "Xright",
+    answerTwo: "Xup",
+    answerThree: "Cleft",
+    answerFour: "Xdown",
+    answerFive: "Xmiddle",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 118,
+    category: "JavaScript Algorithms",
+    question:
+      "In JavaScript, the _______ method creates a new array populated with the results of calling a provided function on every element in the calling array.",
+    answerOne: "XforEach()",
+    answerTwo: "Xfilter()",
+    answerThree: "Xreduce()",
+    answerFour: "Cmap()",
+    answerFive: "Xeach()",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 119,
+    category: "JavaScript Graphs",
+    question: "_______ is a method to traverse every vertex of a graph or tree data structure.",
+    answerOne: "CBreadth-First Search",
+    answerTwo: "XDepth-Last Search",
+    answerThree: "XBreadth-Last Search",
+    answerFour: "XDepth-Only Search",
+    answerFive: "XShallow Search",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 120,
+    category: "JavaScript Linked Lists",
+    question:
+      "When implementing a linked list in JavaScript, each node typically has properties for _______.",
+    answerOne: "Xnext and value",
+    answerTwo: "Cvalue and next",
+    answerThree: "Xprev and value",
+    answerFour: "Xnext and key",
+    answerFive: "Xkey and value",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 121,
+    category: "JavaScript Algorithms",
+    question:
+      "In JavaScript, _______ is a function that creates a new array with the results of calling a provided function on every element in the calling array.",
+    answerOne: "XforEach()",
+    answerTwo: "Cmap()",
+    answerThree: "Xeach()",
+    answerFour: "Xfilter()",
+    answerFive: "Xreduce()",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 122,
+    category: "JavaScript Graphs",
+    question:
+      "A graph data structure that uses a parent-child concept, but without cycles, is called a _______.",
+    answerOne: "XCycle Graph",
+    answerTwo: "XLinked Graph",
+    answerThree: "XBi-Directional Graph",
+    answerFour: "CTree",
+    answerFive: "XRooted Graph",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 123,
+    category: "JavaScript Algorithms",
+    question: "_______ is a JavaScript array method that reduces the array to a single value.",
+    answerOne: "XreduceRight()",
+    answerTwo: "Xconcat()",
+    answerThree: "Xflatten()",
+    answerFour: "Creduce()",
+    answerFive: "Xmerge()",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 124,
+    category: "JavaScript Algorithms",
+    question:
+      "In JavaScript, the _______ method creates a new array with all sub-array elements concatenated into it recursively up to the specified depth.",
+    answerOne: "Xmerge()",
+    answerTwo: "Xcombine()",
+    answerThree: "Xflatten()",
+    answerFour: "Cflat()",
+    answerFive: "Xreduce()",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 125,
+    category: "JavaScript Binary Trees",
+    question:
+      "In JavaScript, a binary tree can be traversed in _______ order, where each node is processed between subtrees.",
+    answerOne: "Xpost-order",
+    answerTwo: "Xpre-order",
+    answerThree: "Cin-order",
+    answerFour: "Xbreadth-first",
+    answerFive: "Xdepth-first",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 126,
+    category: "JavaScript Algorithms",
+    question:
+      "In JavaScript, the _______ array method can be used to determine whether a given element exists in an array, returning a boolean.",
+    answerOne: "Xhas()",
+    answerTwo: "Xexist()",
+    answerThree: "Cincludes()",
+    answerFour: "Xcontains()",
+    answerFive: "Xwithin()",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 127,
+    category: "JavaScript Algorithms",
+    question:
+      "In JavaScript, to combine the elements of an array into a string, you can use the _______ method.",
+    answerOne: "Xcollect()",
+    answerTwo: "Xgather()",
+    answerThree: "Xconcat()",
+    answerFour: "Cjoin()",
+    answerFive: "Xgroup()",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 128,
+    category: "JavaScript Binary Trees",
+    question: "In a binary tree, a node that has no children is known as a _______.",
+    answerOne: "Xroot",
+    answerTwo: "Cleaf",
+    answerThree: "Xbranch",
+    answerFour: "Xtwig",
+    answerFive: "Xstem",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 129,
+    category: "JavaScript Algorithms",
+    question:
+      "In JavaScript, to reverse the order of elements in an array, you can use the _______ method.",
+    answerOne: "Xturn()",
+    answerTwo: "Xswap()",
+    answerThree: "Xinvert()",
+    answerFour: "Creverse()",
+    answerFive: "Xflip()",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 130,
+    category: "JavaScript Linked Lists",
+    question: "In a doubly linked list, each node has a reference to the _______.",
+    answerOne: "Xnext node and previous root",
+    answerTwo: "Xprevious node and next root",
+    answerThree: "Cnext node and previous node",
+    answerFour: "Xnext root and previous root",
+    answerFive: "Xprevious leaf and next leaf",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 131,
+    category: "JavaScript Algorithms",
+    question:
+      "In JavaScript, the _______ array method can be used to modify the contents of an array by removing or replacing existing elements and/or adding new elements in place.",
+    answerOne: "Xmodify()",
+    answerTwo: "Csplice()",
+    answerThree: "Xmutate()",
+    answerFour: "Xshift()",
+    answerFive: "Xedit()",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 132,
+    category: "JavaScript Algorithms",
+    question:
+      "The time complexity of the quicksort algorithm in the worst case scenario is _______.",
+    answerOne: "XO(n)",
+    answerTwo: "XO(log n)",
+    answerThree: "XO(n log n)",
+    answerFour: "CO(n^2)",
+    answerFive: "XO(n!)",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 133,
+    category: "JavaScript Algorithms",
+    question:
+      "In JavaScript, the _______ array method can be used to remove the first item from an array.",
+    answerOne: "Xremove()",
+    answerTwo: "Cshift()",
+    answerThree: "Xpop()",
+    answerFour: "Xextract()",
+    answerFive: "Xdelete()",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 134,
+    category: "JavaScript Algorithms",
+    question:
+      "In JavaScript, to copy an array, you can use the _______ method, which creates a new array with all sub-array elements concatenated into it recursively up to the specified depth.",
+    answerOne: "Xsplice()",
+    answerTwo: "Cslice()",
+    answerThree: "Xcut()",
+    answerFour: "Xcopy()",
+    answerFive: "Xduplicate()",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 135,
+    category: "JavaScript Algorithms",
+    question:
+      "In JavaScript, to merge two or more objects into a new object without modifying the original objects, you can use the _______ method.",
+    answerOne: "Xjoin()",
+    answerTwo: "Xconcat()",
+    answerThree: "CObject.assign()",
+    answerFour: "XObject.merge()",
+    answerFive: "XObject.combine()",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 136,
+    category: "JavaScript Algorithms",
+    question:
+      "The time complexity of accessing an item in a JavaScript object by its key is _______.",
+    answerOne: "XO(n)",
+    answerTwo: "CO(1)",
+    answerThree: "XO(n log n)",
+    answerFour: "XO(n^2)",
+    answerFive: "XO(log n)",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 137,
+    category: "JavaScript Algorithms",
+    question:
+      "The _______ method is used in JavaScript to execute a function once for each array element, and returns a new array with the modified items.",
+    answerOne: "Xchange()",
+    answerTwo: "Cmap()",
+    answerThree: "Xtransform()",
+    answerFour: "Xmodify()",
+    answerFive: "Xiterate()",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 138,
+    category: "JavaScript Algorithms",
+    question:
+      "In JavaScript, the time complexity of searching for an item in an unsorted array is _______.",
+    answerOne: "XO(log n)",
+    answerTwo: "XO(1)",
+    answerThree: "CO(n)",
+    answerFour: "XO(n^2)",
+    answerFive: "XO(n log n)",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 139,
+    category: "JavaScript Algorithms",
+    question: "In JavaScript, the _______ method can be used to add items to the end of an array.",
+    answerOne: "Cpush()",
+    answerTwo: "Xappend()",
+    answerThree: "Xadd()",
+    answerFour: "Xinsert()",
+    answerFive: "XNone of the above",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 140,
+    category: "JavaScript Algorithms",
+    question: "In JavaScript, the _______ method can be used to sort an array.",
+    answerOne: "Xorder()",
+    answerTwo: "Xarrange()",
+    answerThree: "Csort()",
+    answerFour: "Xsequence()",
+    answerFive: "Xrank()",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 141,
+    category: "JavaScript Data Structures",
+    question: "In a JavaScript object, keys are always of type _______.",
+    answerOne: "Xnumber",
+    answerTwo: "Xobject",
+    answerThree: "Xboolean",
+    answerFour: "Cstring",
+    answerFive: "Xarray",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 142,
+    category: "JavaScript Data Structures",
+    question: "In a JavaScript Set object, each value must be _______.",
+    answerOne: "Xa string",
+    answerTwo: "Xa number",
+    answerThree: "Xan array",
+    answerFour: "Can object",
+    answerFive: "Cunique",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 143,
+    category: "JavaScript Algorithms",
+    question:
+      "In JavaScript, to return the first index at which a given element can be found in the array, you can use the _______ method.",
+    answerOne: "Xfirst()",
+    answerTwo: "Xlocate()",
+    answerThree: "Xposition()",
+    answerFour: "CindexOf()",
+    answerFive: "XindexAt()",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 144,
+    category: "JavaScript Algorithms",
+    question:
+      "In JavaScript, the _______ method returns a new string with some or all matches of a pattern replaced by a replacement.",
+    answerOne: "Xchange()",
+    answerTwo: "Xswitch()",
+    answerThree: "Xalter()",
+    answerFour: "Creplace()",
+    answerFive: "Xswap()",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 145,
+    category: "JavaScript Algorithms",
+    question:
+      "In JavaScript, the _______ method executes a reducer function (that you provide) on each element of the array, resulting in a single output value.",
+    answerOne: "Xcompress()",
+    answerTwo: "Xcombine()",
+    answerThree: "Xmingle()",
+    answerFour: "Creduce()",
+    answerFive: "Xjoin()",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 146,
+    category: "Python Data Structures",
+    question: "In Python, to add an item to the end of the list, you can use the _______ method.",
+    answerOne: "Xpush()",
+    answerTwo: "Cappend()",
+    answerThree: "Xinsert()",
+    answerFour: "Xadd()",
+    answerFive: "Xattach()",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 147,
+    category: "Python Data Structures",
+    question:
+      "In Python, the _______ data structure is a collection which is unordered, changeable and indexed. It has no duplicate elements.",
+    answerOne: "Xtuple",
+    answerTwo: "Xlist",
+    answerThree: "Xarray",
+    answerFour: "Cset",
+    answerFive: "Xdictionary",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 148,
+    category: "Python Algorithms",
+    question:
+      "In Python, the _______ function can be used to return the number of times a specified value appears in the string.",
+    answerOne: "Xappear()",
+    answerTwo: "Ccount()",
+    answerThree: "Xnumber()",
+    answerFour: "Xtotal()",
+    answerFive: "Xquantity()",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 149,
+    category: "Python Data Structures",
+    question:
+      "In Python, a _______ is a collection which is ordered and unchangeable. It allows duplicate members.",
+    answerOne: "Ctuple",
+    answerTwo: "Xset",
+    answerThree: "Xdictionary",
+    answerFour: "Xlist",
+    answerFive: "Xarray",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 150,
+    category: "Python Algorithms",
+    question:
+      "In Python, the _______ function can be used to return a string which is a concatenation of all strings in an iterable.",
+    answerOne: "Xmerge()",
+    answerTwo: "Xattach()",
+    answerThree: "Cjoin()",
+    answerFour: "Xcombine()",
+    answerFive: "Xlink()",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 151,
+    category: "Python Algorithms",
+    question:
+      "In Python, the time complexity of searching for an item in a sorted list using binary search is _______.",
+    answerOne: "XO(n)",
+    answerTwo: "XO(1)",
+    answerThree: "XO(n^2)",
+    answerFour: "CO(log n)",
+    answerFive: "XO(n log n)",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 152,
+    category: "Python Data Structures",
+    question:
+      "In Python, the _______ data structure is a collection which is unordered, changeable and indexed. It does not allow duplicate values.",
+    answerOne: "Xset",
+    answerTwo: "Xtuple",
+    answerThree: "Cdictionary",
+    answerFour: "Xlist",
+    answerFive: "Xarray",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 153,
+    category: "Python Data Structures",
+    question:
+      "In Python, a _______ is a collection which is ordered and changeable. It allows duplicate members.",
+    answerOne: "Xtuple",
+    answerTwo: "Clist",
+    answerThree: "Xdictionary",
+    answerFour: "Xset",
+    answerFive: "Xarray",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 154,
+    category: "Python Algorithms",
+    question:
+      "In Python, the _______ method returns a string with a certain number of leading characters removed. The leading characters to be removed are specified as parameters.",
+    answerOne: "Xremove()",
+    answerTwo: "Xstrip()",
+    answerThree: "Clstrip()",
+    answerFour: "Xdelete()",
+    answerFive: "Xcut()",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 155,
+    category: "Python Algorithms",
+    question:
+      "In Python, the _______ function can be used to return the length (the number of items) of an object.",
+    answerOne: "Clen()",
+    answerTwo: "Xsize()",
+    answerThree: "Xquantity()",
+    answerFour: "Xamount()",
+    answerFive: "Xtotal()",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+
+  {
+    questionNumber: 156,
+    category: "React and React-Redux",
+    question:
+      "In React 18, ________ lets you prepare multiple versions of the UI in memory and switch between them without causing a re-render.",
+    answerOne: "XComponent swapping",
+    answerTwo: "CReact Server Components",
+    answerThree: "XReact Virtualization",
+    answerFour: "XReact State Transition",
+    answerFive: "XReact Memory Buffer",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 157,
+    category: "React and React-Redux",
+    question:
+      "The _______ method is used in React and React-Redux to wrap a root and its descendants so updates to them can be batched together.",
+    answerOne: "XbatchUpdate()",
+    answerTwo: "CcreateRoot()",
+    answerThree: "Xroot()",
+    answerFour: "XrootBatch()",
+    answerFive: "XcreateBatch()",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 158,
+    category: "React and React-Redux",
+    question:
+      "React 18 introduces _______ that helps to automatically batch multiple state updates into a single render pass.",
+    answerOne: "XRender Optimization",
+    answerTwo: "XSingle Pass Rendering",
+    answerThree: "Cautomatic batching",
+    answerFour: "XState Aggregation",
+    answerFive: "XBatch State Update",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 159,
+    category: "React and React-Redux",
+    question:
+      "React 18 introduced a new API called ________ that allows developers to suspend and resume rendering on a per-component basis.",
+    answerOne: "XrenderControl()",
+    answerTwo: "Csuspense",
+    answerThree: "XrenderPause()",
+    answerFour: "XrenderSuspense()",
+    answerFive: "Xsuspend()",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 160,
+    category: "React and React-Redux",
+    question:
+      "In React and React-Redux, _______ can be used for controlling the visual loading sequence of a component.",
+    answerOne: "XcomponentLoading()",
+    answerTwo: "XloadingControl()",
+    answerThree: "CstartTransition",
+    answerFour: "XcomponentSequence()",
+    answerFive: "XstartLoading()",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 161,
+    category: "React and React-Redux",
+    question:
+      "The _______ API in React and React-Redux is used to inform React about a state update that can be interrupted by other more important updates.",
+    answerOne: "XintermediateState()",
+    answerTwo: "XinterruptibleUpdate()",
+    answerThree: "CstartTransition()",
+    answerFour: "XprioritizeUpdate()",
+    answerFive: "XstateTransition()",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 162,
+    category: "React and React-Redux",
+    question:
+      "In React and React-Redux, _______ is a new type of component that can be rendered on the server and then sent to the client as HTML.",
+    answerOne: "XHTML Component",
+    answerTwo: "CServer Component",
+    answerThree: "XTransfer Component",
+    answerFour: "XServer HTML Component",
+    answerFive: "XRemote Component",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 163,
+    category: "React and React-Redux",
+    question:
+      "In React 18, _______ is the way to create a root for a React tree, used as a replacement for `ReactDOM.render()`.",
+    answerOne: "XReact.create()",
+    answerTwo: "XReact.initialize()",
+    answerThree: "CReactDOM.createRoot()",
+    answerFour: "XReact.root()",
+    answerFive: "XReactDOM.initializeRoot()",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 164,
+    category: "React and React-Redux",
+    question:
+      "React 18 introduces a built-in _______ API that allows React to avoid unnecessary layout computations and browser renders.",
+    answerOne: "XComputation Manager",
+    answerTwo: "Cconcurrent rendering",
+    answerThree: "XRender Optimizer",
+    answerFour: "XLayout Manager",
+    answerFive: "XBrowser Renderer",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 165,
+    category: "React and React-Redux",
+    question:
+      "React 18's _______ enables select parts of your UI to update and render immediately, while others update later.",
+    answerOne: "XRender Prioritization",
+    answerTwo: "XSelective Rendering",
+    answerThree: "XUpdate Prioritization",
+    answerFour: "Cselective hydration",
+    answerFive: "XUI Segmenting",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 166,
+    category: "React and React-Redux",
+    question: "In React 18, _______ let you split a rendering task into multiple smaller tasks.",
+    answerOne: "CReact.lazy()",
+    answerTwo: "XReact.split()",
+    answerThree: "XReact.fragment()",
+    answerFour: "XReact.parts()",
+    answerFive: "XReact.task()",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 167,
+    category: "React and React-Redux",
+    question:
+      "React 18 introduced the _______ method that enables you to block a transition from finishing until some condition is met.",
+    answerOne: "XblockTransition()",
+    answerTwo: "XholdTransition()",
+    answerThree: "XsuspendTransition()",
+    answerFour: "CuseTransition()",
+    answerFive: "XdelayTransition()",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 168,
+    category: "React and React-Redux",
+    question:
+      "React 18's _______ mechanism allows users to interact with the page during a large update, providing a smoother user experience.",
+    answerOne: "CInterruptible Rendering",
+    answerTwo: "XUI Decoupling",
+    answerThree: "XUser Interactivity",
+    answerFour: "XUpdate Pausing",
+    answerFive: "XRender Throttling",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 169,
+    category: "React and React-Redux",
+    question:
+      "In React 18, _______ is a feature that allows you to defer rendering for certain parts of your application to improve perceived performance.",
+    answerOne: "XDefer Rendering",
+    answerTwo: "XDelay Rendering",
+    answerThree: "Csuspense",
+    answerFour: "XPostpone Rendering",
+    answerFive: "XRender Later",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 171,
+    category: "React and React-Redux",
+    question:
+      "In React 17, the new JSX Transform introduced _______ which is a JavaScript function that converts your JSX code into JavaScript.",
+    answerOne: "CReact.createElement()",
+    answerTwo: "XReact.JSX()",
+    answerThree: "XReact.transformJSX()",
+    answerFour: "XReact.compileJSX()",
+    answerFive: "XReact.generateJS()",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 172,
+    category: "React and React-Redux",
+    question:
+      "In React-Redux, _______ is a function that allows you to extract data from the Redux store state.",
+    answerOne: "XuseData()",
+    answerTwo: "CuseSelector()",
+    answerThree: "XuseState()",
+    answerFour: "XuseStore()",
+    answerFive: "XuseExtract()",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 173,
+    category: "React and React-Redux",
+    question: "In React-Redux, the _______ hook dispatches actions to the store.",
+    answerOne: "XuseDispatchAction()",
+    answerTwo: "CuseDispatch()",
+    answerThree: "XuseAction()",
+    answerFour: "XuseStoreDispatch()",
+    answerFive: "XNone of the above",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 174,
+    category: "React and React-Redux",
+    question:
+      "In React 18, _______ lets you prepare a new version of a component in memory, which can replace the current one on screen when ready.",
+    answerOne: "XusePrepare()",
+    answerTwo: "CuseTransition()",
+    answerThree: "XuseVersion()",
+    answerFour: "XuseReplace()",
+    answerFive: "XuseComponent()",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 175,
+    category: "React and React-Redux",
+    question:
+      "In React-Redux, _______ is a higher order function that connects a React component to the Redux store.",
+    answerOne: "Xlink()",
+    answerTwo: "XconnectRedux()",
+    answerThree: "Cconnect()",
+    answerFour: "XstoreLink()",
+    answerFive: "XconnectStore()",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 176,
+    category: "React and React-Redux",
+    question:
+      "In React 18, the _______ API allows you to start a transition, providing a way to coordinate changes to your components with different levels of priority.",
+    answerOne: "XuseChange()",
+    answerTwo: "XuseShift()",
+    answerThree: "CstartTransition()",
+    answerFour: "XuseTransition()",
+    answerFive: "XstartChange()",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 177,
+    category: "React and React-Redux",
+    question:
+      "In React-Redux, the _______ is a function of the store that allows you to dispatch actions.",
+    answerOne: "Xaction()",
+    answerTwo: "Cdispatch()",
+    answerThree: "Xsend()",
+    answerFour: "XpushAction()",
+    answerFive: "XNone of the above",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 178,
+    category: "React and React-Redux",
+    question:
+      "In React, _______ are used to split components into non-visual logic and visual parts.",
+    answerOne: "XDividers",
+    answerTwo: "XDecomposers",
+    answerThree: "CSeparators",
+    answerFour: "XBreakers",
+    answerFive: "CSplitting Tools",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 179,
+    category: "React and React-Redux",
+    question:
+      "In React, _______ is a concept that allows a component to maintain internal state data, independently managing it itself.",
+    answerOne: "XInternal Data Management",
+    answerTwo: "CState",
+    answerThree: "XComponent Data",
+    answerFour: "XSelf-Containment",
+    answerFive: "XData Independence",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 180,
+    category: "React and React-Redux",
+    question: "In React-Redux, the _______ is the central repository of all state data.",
+    answerOne: "XData Center",
+    answerTwo: "CStore",
+    answerThree: "XState Repository",
+    answerFour: "XData Repository",
+    answerFive: "XState Center",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 181,
+    category: "React and React-Redux",
+    question: "_______ hook lets you read the state from the Redux store.",
+    answerOne: "CuseSelector()",
+    answerTwo: "XuseDispatch()",
+    answerThree: "XuseReact()",
+    answerFour: "XuseStore()",
+    answerFive: "XuseContext()",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 182,
+    category: "React and React-Redux",
+    question: "React components are often written in a format known as _______.",
+    answerOne: "XJavaScriptXML",
+    answerTwo: "CJSX",
+    answerThree: "XHTMLJS",
+    answerFour: "XJavaScriptHTML",
+    answerFive: "XJava Scripting XML",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 183,
+    category: "React and React-Redux",
+    question: "React components defined as classes have additional features, such as _______.",
+    answerOne: "XUseState",
+    answerTwo: "CLifecycle methods",
+    answerThree: "XUseContext",
+    answerFour: "XRenderProps",
+    answerFive: "XUseEffect",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 184,
+    category: "React and React-Redux",
+    question: "The _______ hook is used to manage local state of a function component in React.",
+    answerOne: "CuseState()",
+    answerTwo: "XuseClass()",
+    answerThree: "XuseStore()",
+    answerFour: "XuseVariable()",
+    answerFive: "XuseObject()",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 185,
+    category: "React and React-Redux",
+    question: "In React-Redux, a _______ is a function that creates an action object.",
+    answerOne: "CAction Creator",
+    answerTwo: "XStore Creator",
+    answerThree: "XObject Maker",
+    answerFour: "XAction Producer",
+    answerFive: "XState Generator",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+
+  {
+    questionNumber: 186,
+    category: "Express.js",
+    question: "Express.js is a _______ web application framework for Node.js.",
+    answerOne: "Xmodular",
+    answerTwo: "Xstructured",
+    answerThree: "Xsystematic",
+    answerFour: "Cminimalist",
+    answerFive: "Xsimplified",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 187,
+    category: "Express.js",
+    question:
+      "Express.js provides a robust set of features for web and mobile applications including a myriad of HTTP _______ methods and middleware.",
+    answerOne: "Xprocessing",
+    answerTwo: "Chelper",
+    answerThree: "Xhandler",
+    answerFour: "Xresponding",
+    answerFive: "Xinteraction",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 188,
+    category: "Express.js",
+    question:
+      "In Express.js, _______ are functions that have access to the request object, the response object, and the next function in the application's request-response cycle.",
+    answerOne: "Xhandlers",
+    answerTwo: "Xprocessors",
+    answerThree: "Cmiddleware functions",
+    answerFour: "Xresponders",
+    answerFive: "Xtranslators",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 189,
+    category: "Express.js",
+    question:
+      "In Express.js, the order of _______ defined is very important as they are executed in the order they are defined.",
+    answerOne: "Xresponses",
+    answerTwo: "Xrequests",
+    answerThree: "Cmiddleware",
+    answerFour: "Xroutes",
+    answerFive: "Xcallbacks",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 190,
+    category: "Express.js",
+    question:
+      "To set up a basic server in Express.js, you would use the _______ method of an Express app instance.",
+    answerOne: "Xstart",
+    answerTwo: "Xrun",
+    answerThree: "Xserve",
+    answerFour: "Clisten",
+    answerFive: "Xinit",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 191,
+    category: "Express.js",
+    question: "In Express.js, app.use() is used to add _______ to your application.",
+    answerOne: "Xfeatures",
+    answerTwo: "Xfunctions",
+    answerThree: "Cmiddleware",
+    answerFour: "Xcontrollers",
+    answerFive: "Xlisteners",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 192,
+    category: "Express.js",
+    question:
+      "Express.js uses the concept of routing to determine how an application responds to a client request to a particular _______.",
+    answerOne: "Xaddress",
+    answerTwo: "Cendpoint",
+    answerThree: "XURL",
+    answerFour: "Xhandler",
+    answerFive: "Xserver",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 193,
+    category: "Express.js",
+    question:
+      "In Express.js, res.json() is a function that sends a JSON response. This method sends a response (with the correct content-type) that is the parameter converted to a JSON _______.",
+    answerOne: "Xobject",
+    answerTwo: "Xfile",
+    answerThree: "Cstring",
+    answerFour: "Xformat",
+    answerFive: "Xoutput",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 194,
+    category: "Express.js",
+    question:
+      "Express.js makes it easy to define routes of your application. A route can be as simple as a path and a _______.",
+    answerOne: "XURL",
+    answerTwo: "Xresponse",
+    answerThree: "Chandler",
+    answerFour: "Xmethod",
+    answerFive: "Xdirectory",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 195,
+    category: "Express.js",
+    question:
+      "In Express.js, you can use template engines like _______ to generate HTML content on the server side based on your views.",
+    answerOne: "XPug",
+    answerTwo: "CPug",
+    answerThree: "XMustache",
+    answerFour: "XBlade",
+    answerFive: "XEJS",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 196,
+    category: "Express.js",
+    question: "What HTTP method is typically used to update data?",
+    answerOne: "CPUT",
+    answerTwo: "XGET",
+    answerThree: "XPOST",
+    answerFour: "XDELETE",
+    answerFive: "XFETCH",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 197,
+    category: "Express.js",
+    question: "Which Express.js function ends the request-response cycle?",
+    answerOne: "Xapp.use()",
+    answerTwo: "Xapp.listen()",
+    answerThree: "Cres.send()",
+    answerFour: "Xapp.get()",
+    answerFive: "Xapp.post()",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 198,
+    category: "Express.js",
+    question: "To receive form data in Express.js, you can use the _______ middleware.",
+    answerOne: "Xurlencoded",
+    answerTwo: "Cbody-parser",
+    answerThree: "Xquery-parser",
+    answerFour: "Xdata-parser",
+    answerFive: "Xrequest-parser",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 199,
+    category: "Express.js",
+    question:
+      "What would you use to define a variable that can be used in all views in Express.js?",
+    answerOne: "Xapp.get()",
+    answerTwo: "Xapp.set()",
+    answerThree: "Xapp.variable()",
+    answerFour: "Capp.locals",
+    answerFive: "Xapp.global()",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 200,
+    category: "Express.js",
+    question: "Express.js is a _______ web application framework for Node.js.",
+    answerOne: "Xmodular",
+    answerTwo: "Xstructured",
+    answerThree: "Xsystematic",
+    answerFour: "Cminimalist",
+    answerFive: "Xsimplified",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 201,
+    category: "Express.js",
+    question:
+      "In Express.js, app.route() is a convenient method to define routes that belong to the same _______.",
+    answerOne: "Xdomain",
+    answerTwo: "Xpath",
+    answerThree: "Croute path",
+    answerFour: "Xgroup",
+    answerFive: "Xcallback",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 202,
+    category: "Express.js",
+    question: "What HTTP method is typically used to read data?",
+    answerOne: "XPUT",
+    answerTwo: "CGET",
+    answerThree: "XPOST",
+    answerFour: "XDELETE",
+    answerFive: "XFETCH",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 203,
+    category: "Express.js",
+    question:
+      "What would you use to define a variable that can be used only in the current request-response cycle in Express.js?",
+    answerOne: "Xres.variable()",
+    answerTwo: "Xres.set()",
+    answerThree: "Xres.get()",
+    answerFour: "Cres.locals",
+    answerFive: "Xres.global()",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 204,
+    category: "Express.js",
+    question: "What HTTP method is typically used to create data?",
+    answerOne: "XPUT",
+    answerTwo: "XGET",
+    answerThree: "CPOST",
+    answerFour: "XDELETE",
+    answerFive: "XFETCH",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 205,
+    category: "Express.js",
+    question: "In Express.js, what is the correct syntax for handling errors using middleware?",
+    answerOne: "Xapp.use((err, req, res, next) => {})",
+    answerTwo: "Capp.use((err, req, res, next) => {})",
+    answerThree: "Xapp.error((err, req, res, next) => {})",
+    answerFour: "Xapp.handle((err, req, res, next) => {})",
+    answerFive: "Xapp.catch((err, req, res, next) => {})",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 206,
+    category: "Express.js",
+    question: "In Express.js, how can you serve static files?",
+    answerOne: "Xapp.static()",
+    answerTwo: "Xapp.file()",
+    answerThree: "Capp.use(express.static())",
+    answerFour: "Xapp.serve()",
+    answerFive: "Xapp.resource()",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 207,
+    category: "Express.js",
+    question: "What does the 'next' argument represent in Express.js middleware?",
+    answerOne: "XThe next middleware in the application",
+    answerTwo: "CThe callback function to call the next middleware in the stack",
+    answerThree: "XThe next request that comes into the server",
+    answerFour: "XThe next response to be sent to the client",
+    answerFive: "XThe next route to be executed",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 208,
+    category: "Express.js",
+    question: "What HTTP method is typically used to delete data?",
+    answerOne: "XPUT",
+    answerTwo: "XGET",
+    answerThree: "XPOST",
+    answerFour: "CDELETE",
+    answerFive: "XFETCH",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 209,
+    category: "Express.js",
+    question: "In Express.js, how can you handle 404 errors that have no other route handlers?",
+    answerOne: "Xapp.catch(404, (req, res, next) => {})",
+    answerTwo: "Xapp.error(404, (req, res, next) => {})",
+    answerThree: "Xapp.handle(404, (req, res, next) => {})",
+    answerFour: "Capp.use((req, res, next) => {})",
+    answerFive: "Xapp.get(404, (req, res, next) => {})",
+    timesCorrect: 0,
+    timesIncorrect: 0,
+  },
+  {
+    questionNumber: 210,
+    category: "Express.js",
+    question:
+      "In Express.js, how can you handle all HTTP methods at a specific route using the same function?",
+    answerOne: "Xapp.get('*', (req, res, next) => {})",
+    answerTwo: "Xapp.use('*', (req, res, next) => {})",
+    answerThree: "Xapp.route('*', (req, res, next) => {})",
+    answerFour: "Capp.all('*', (req, res, next) => {})",
+    answerFive: "Xapp.handle('*', (req, res, next) => {})",
     timesCorrect: 0,
     timesIncorrect: 0,
   },

@@ -66,42 +66,65 @@ const Home = () => {
 
   return (
     <>
-      <Nav />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <MCQ updateCorrectState={setCorrectState} updateIncorrectState={setIncorrectState} />
-          }
-        />
-        <Route
-          path="/codingquestions"
-          element={
-            <CodingQuestions
-              updateCorrectState={setCorrectState}
-              updateIncorrectState={setIncorrectState}
-              prop={123}
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          minHeight: "100vh",
+        }}
+      >
+        <Nav />
+        <div style={{ flexGrow: "100%" }}>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <MCQ
+                  updateCorrectState={setCorrectState}
+                  updateIncorrectState={setIncorrectState}
+                />
+              }
             />
-          }
-        />
-      </Routes>
+            <Route
+              path="/codingquestions"
+              element={
+                <CodingQuestions
+                  updateCorrectState={setCorrectState}
+                  updateIncorrectState={setIncorrectState}
+                  prop={123}
+                />
+              }
+            />
+          </Routes>
+        </div>
 
-      <div className="mcq-stats">
-        <button
-          className={correctClass === "correct" ? "correct-answer" : "correct-stats-button"}
-          style={{ flex: 1 }}
+        <div
+          style={{
+            display: "flex",
+            marginBottom: "1rem",
+            marginTop: "auto",
+          }}
         >
-          Correct:{correctThisSession}
-        </button>
-        <button
-          className={correctClass === "incorrect" ? "incorrect-answer" : "incorrect-stats-button"}
-          style={{ flex: 1 }}
-        >
-          Incorrect:{incorrectThisSession}
-        </button>
-        <button className="clear-stats-button" style={{ flex: 1 }} onClick={clearStats}>
-          Clear Stats
-        </button>{" "}
+          <div className="mcq-stats">
+            <button
+              className={correctClass === "correct" ? "correct-answer" : "correct-stats-button"}
+              style={{ flex: 1 }}
+            >
+              Correct:{correctThisSession}
+            </button>
+            <button
+              className={
+                correctClass === "incorrect" ? "incorrect-answer" : "incorrect-stats-button"
+              }
+              style={{ flex: 1 }}
+            >
+              Incorrect:{incorrectThisSession}
+            </button>
+            <button className="clear-stats-button" style={{ flex: 1 }} onClick={clearStats}>
+              Clear Stats
+            </button>{" "}
+          </div>
+        </div>
       </div>
     </>
   );

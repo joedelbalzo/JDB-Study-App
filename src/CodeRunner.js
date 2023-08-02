@@ -6,11 +6,10 @@ import "ace-builds/src-noconflict/theme-monokai";
 import { Link } from "react-router-dom";
 
 const CodeRunner = ({ question, onCorrectChange }) => {
-  // console.log(question);
   const iframeRef = useRef(null);
   const [code, setCode] = useState(question.code);
   const [output, setOutput] = useState([]);
-  const [codeIsCorrect, setCodeIsCorrect] = useState(Boolean);
+  const [codeIsCorrect, setCodeIsCorrect] = useState(false);
   const [codingState, setCodingState] = useState("javascript");
   const [isIframeLoaded, setIsIframeLoaded] = useState(false);
   const [pythonOutput, setPythonOutput] = useState("");
@@ -35,10 +34,21 @@ const CodeRunner = ({ question, onCorrectChange }) => {
       results[0] === question.answer[0].toString() &&
       results[1] === question.answer[1].toString() &&
       results[2] === question.answer[2].toString();
-    console.log(results, isCorrect);
-    await setCodeIsCorrect(isCorrect);
-    await onCorrectChange(isCorrect);
-    setOutput(results);
+    try {
+      await setCodeIsCorrect(isCorrect);
+      setOutput(results);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    setCodeIsCorrect(false);
+    setCode(question.code);
+  }, [question]);
+
+  const submitCode = async () => {
+    await onCorrectChange(true);
   };
 
   const onChange = (newValue) => {
@@ -58,18 +68,15 @@ const CodeRunner = ({ question, onCorrectChange }) => {
   }, []);
 
   useEffect(() => {
-    console.log("Python output:", pythonOutput);
     const answers = `${question.answer[0]}\n${question.answer[1]}\n${question.answer[2]}`;
     console.log(answers);
     if (pythonOutput == answers) {
-      console.log("YOU'RE RIGHT");
     }
   }, [pythonOutput]);
 
   useEffect(() => {
     if (codingState === "python" && iframeRef.current.contentWindow) {
       const code = question.codePython;
-      console.log(code);
       iframeRef.current.contentWindow.postMessage(
         {
           eventType: "populateCode",
@@ -97,7 +104,7 @@ const CodeRunner = ({ question, onCorrectChange }) => {
 
   return (
     <div className="code-runner">
-      <h3>{question.question}</h3>
+      <h4>{question.question}</h4>
       <div className="js-or-python">
         <span
           onClick={() => {
@@ -153,9 +160,27 @@ const CodeRunner = ({ question, onCorrectChange }) => {
           Run Code
         </button>
       ) : (
-        <button className="run-button" onClick={runCode}>
-          Run Code
-        </button>
+        <>
+          <button className="run-button" onClick={runCode} style={{ marginRight: "2px" }}>
+            Run Code
+          </button>
+          <button
+            disabled={codeIsCorrect === false}
+            className={codeIsCorrect === false ? "disabled-run-button" : "run-button"}
+            style={{ marginLeft: "2px" }}
+            onClick={submitCode}
+          >
+            Submit Code
+          </button>
+          <button
+            disabled={codeIsCorrect === false}
+            className={codeIsCorrect === false ? "disabled-run-button" : "run-button"}
+            style={{ marginLeft: "2px" }}
+            onClick={submitCode}
+          >
+            Clear Code
+          </button>
+        </>
       )}
       {codingState === "javascript" && (
         <>
